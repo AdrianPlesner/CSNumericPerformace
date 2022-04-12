@@ -1,11 +1,13 @@
 using CsharpRAPL.Benchmarking.Attributes;
 
-namespace EnergyTest;
+namespace EnergyTest.Benchmarks;
 
 public class MatrixMultiplication
 {
     public static ulong Iterations;
     public static ulong LoopIterations;
+    
+    //Initialize arrays
     static int size = 80;
     static readonly Random r = new();
     static double[,] R = new double[size,size], A = InitMatrix(size), B = InitMatrix(size);
@@ -67,9 +69,8 @@ public class MatrixMultiplication
     }
 
     [Benchmark("Matrix multiplication", "Unsafe matrix multiplication")]
-    public static double Unsafe()
+    public static double[,] Unsafe()
     {
-        var result = 0.0;
         for (ulong i = 0; i < LoopIterations; i++)
         {
             for (var r = 0; r<rRows; r++) {
@@ -84,19 +85,13 @@ public class MatrixMultiplication
                     }
                 }
             }
-            foreach (var n in R)
-            {
-                result += n;
-            }
-            R = new double[size, size];
         }
-        return result;
+        return R;
     }
 
     [Benchmark("Matrix multiplication", "Java like matrix multiplication")]
-    public static double JavaLike()
+    public static double[][] JavaLike()
     {
-        var result = 0.0;
         for (ulong i = 0; i < LoopIterations; i++)
         {
             for (var r=0; r<rRows; r++) {
@@ -108,17 +103,9 @@ public class MatrixMultiplication
                     Rr[c] = sum;
                 }
             }
-            foreach (var r in RR)
-            {
-                foreach (var n in r)
-                {
-                    result += n;
-                }
-                
-            }
-            RR = InitArray(size, true);
         }
-        return result;
-        
+
+        return RR;
+
     }
 }
