@@ -3,7 +3,7 @@
 using CsharpRAPL.Benchmarking;
 using CsharpRAPL.CommandLine;
 
-Console.WriteLine("Hello, World!!");
+//Console.WriteLine("Hello, World!!");
 
 var options = CsharpRAPLCLI.Parse(args);
 
