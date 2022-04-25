@@ -1,7 +1,6 @@
 
 # CSNumericPerformance
 
-***
 
 This project serves to replicate the [experiments of Peter Sestoft](https://www.itu.dk/~sestoft/papers/numericperformance.pdf), investigating the performance of C, C# and Java regarding heavy numeric operations. However, in addition to measuring the run time, we also measure the energy consumption.
 
