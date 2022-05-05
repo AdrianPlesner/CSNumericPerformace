@@ -124,25 +124,22 @@ int shakeHands(int socket){
 }
 
 
-void main(){
-  int k = serveSingleClient("/tmp/foo.sock2");
-  if(k<0){
-    printf("Bad socket...");
-    exit(EXIT_FAILURE);
-  }
-  CMD cmd = Done;
-  for(int i = 0; i < 10; i++)
-  {
-    printf("sending: [%s]...", tos(cmd));
-    writeCmd(k,Done);
-    printf("OK... reading\n");
-    cmd = readCmd(k);
-    printf("received: [%s]...", tos(cmd));
-  }
-  printf("OK... reading\n");
-  readCmd(k);
-  closeSocket(k);
-}
-// struct sockaddr_un saddr = {AF_UNIX, "/tmp/foo.sock"};
-// bind(listfd, (struct sockaddr *)&saddr, sizeof(saddr));
-
+// void main(){
+//   int k = serveSingleClient("/tmp/foo.sock2");
+//   if(k<0){
+//     printf("Bad socket...");
+//     exit(EXIT_FAILURE);
+//   }
+//   CMD cmd = Done;
+//   for(int i = 0; i < 10; i++)
+//   {
+//     printf("sending: [%s]...", tos(cmd));
+//     writeCmd(k,Done);
+//     printf("OK... reading\n");
+//     cmd = readCmd(k);
+//     printf("received: [%s]...", tos(cmd));
+//   }
+//   printf("OK... reading\n");
+//   readCmd(k);
+//   closeSocket(k);
+// }

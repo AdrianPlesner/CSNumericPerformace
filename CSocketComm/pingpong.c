@@ -1,18 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "comm.h"
+#include "scomm.h"
+#include "cmd.h"
 
 int main(int argc, char **argv){
   if(argc<=1){
-    fprintf(stderr,"\nUsage: %s [FIFO]\n\n", argv[0]);
+    fprintf(stderr,"\nUsage: %s [socket]\n\n", argv[0]);
     exit(EXIT_FAILURE);
   }
-  FILE *f = fopen(argv[1], "r+");
-  if (f == NULL)
+  int s = serveSingleClient(argv[1]);
+  if(s<0){
+    printf("Bad socket...");
     exit(EXIT_FAILURE);
+  }
   CMD c;
   do{
-    writeCmd(f, Go);
-  } while ((c = readCmd(f))>= Go ); 
-  fclose(f);
+    writeCmd(s, Go);
+  } while ((c = readCmd(s))>= Go ); 
+  closeSocket(s);
 }
