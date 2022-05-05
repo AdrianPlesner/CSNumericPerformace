@@ -13,51 +13,52 @@ using static Cmd;
 
 public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnumerable<Cmd>
 {
-    ILogger<FPipe> L { get; }
-    Socket s;
+    ILogger<FPipe> Logger { get; }
+    Socket S { get; }
 
-    public FPipe(string file, ILogger<FPipe> logger = default)
+    public FPipe(string file, ILogger<FPipe>? logger = null)
     {
 
-        this.L = logger ?? (LoggerFactory.Create(b => {
+        this.Logger = logger ?? (LoggerFactory.Create(b => {
             b.AddConsole();
         }).CreateLogger<FPipe>());
-        L.LogInformation("Creating socket endpoint");
+        Logger.LogInformation("Creating socket endpoint");
         UnixDomainSocketEndPoint ep = new UnixDomainSocketEndPoint(file);
-        L.LogInformation("Creating socket");
+        Logger.LogInformation("Creating socket");
         if (File.Exists(file))
         {
-            s = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
-            L.LogInformation("Connecting...");
-            s.Connect(ep);
-            ShakeHands(s);
+            S = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
+            Logger.LogInformation("Connecting...");
+            S.Connect(ep);
+            ShakeHands(S);
         }
         else
         {
             Socket FileSocket;
-            L.LogInformation("Serving...");
+            Logger.LogInformation("Serving...");
             FileSocket = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
             FileSocket.Bind(ep);
             FileSocket.Listen();
-            L.LogInformation("Listening");
-            s = FileSocket.Accept();
+            Logger.LogInformation("Listening");
+            S = FileSocket.Accept();
             FileSocket.Disconnect(false);
             FileSocket.Dispose();
+            ReceiveHandshake(S);
         }
-        L.LogInformation("Connected..");
+        Logger.LogInformation("Connected..");
         
 
     }
     const Int32 MagicHandshakeValue = 25;
-    Cmd cmd(byte[] buffer)
+    Cmd CmdFromBB(byte[] buffer)
     {
         sbyte result = (sbyte)buffer[0];
         return (Cmd)result;
     }
-    byte[] bytes(Cmd c)
+    byte[] BBFromCmd(Cmd c)
     {
         var b = new byte[] { (byte)c };
-        L.LogTrace($"{nameof(bytes)}: {c} ==> {Convert.ToHexString(b)} ({b.Length}b)");
+        Logger.LogTrace($"{nameof(BBFromCmd)}: {c} ==> {Convert.ToHexString(b)} ({b.Length}b)");
         return b;
     }
     void ValidateHandshake(byte[] data)
@@ -69,14 +70,14 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
         Array.Reverse(rev);
         if (result == MagicHandshakeValue)
         {
-            L.LogInformation($"Handshake OK {MagicHandshakeValue}/{result}");
+            Logger.LogInformation($"Handshake OK {MagicHandshakeValue}/{result}");
             return;
         }
 
         int revResult = BitConverter.ToInt32(rev);
         if (revResult == MagicHandshakeValue)
         {
-            L.LogError($"Other side uses {(BitConverter.IsLittleEndian ? "BigEndian" : "LittleEndian")} -- {MagicHandshakeValue}/{result}");
+            Logger.LogError($"Other side uses {(BitConverter.IsLittleEndian ? "BigEndian" : "LittleEndian")} -- {MagicHandshakeValue}/{result}");
             return;
         }
         throw new InvalidDataException("Bad handshake..." + result);
@@ -92,9 +93,7 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
 
     public void ShakeHands(Socket socket)
     {
-        Int32 n = 25;
-        Int32 result;
-        var data = BitConverter.GetBytes(n);
+        var data = BitConverter.GetBytes(MagicHandshakeValue);
         socket.Send(data, SocketFlags.None);
         socket.Receive(data, SocketFlags.None);
         ValidateHandshake(data);
@@ -103,10 +102,12 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
     public void ReceiveHandshake(Socket socket)
     {
         byte[] data=new byte[4];
-        Int32 n = 25;
         Int32 result;
+        Logger.LogInformation("Waiting for handshake");
         socket.Receive(data, SocketFlags.None);
         result = BitConverter.ToInt32(data);
+        Logger.LogInformation($"[{nameof(ReceiveHandshake)}] Read: {Convert.ToHexString(data)}/{result}");
+        BitConverter.GetBytes(MagicHandshakeValue).CopyTo(data.AsMemory());
         socket.Send(data);
         ValidateHandshake(data);
     }
@@ -116,11 +117,11 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
         try
         {
             var buffer = new byte[1];
-            var count = await s.ReceiveAsync(buffer, SocketFlags.None, ct);
-            return cmd(buffer);
+            var count = await S.ReceiveAsync(buffer, SocketFlags.None, ct);
+            return CmdFromBB(buffer);
         }
         catch(Exception e) {
-            L.LogError(e.Message);
+            Logger.LogError(e.Message);
             return Error; 
         }
     }
@@ -128,16 +129,16 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
     {
         try
         {
-            L.LogTrace($"Sending {cmd}");
-            var data = bytes(cmd);
-            L.LogTrace($"data: {Convert.ToHexString(data)}");
-            var sent = await s.SendAsync(data, SocketFlags.None, cancellationToken);
-            L.LogTrace($"Sent: {sent}");
+            Logger.LogTrace($"Sending {cmd}");
+            var data = BBFromCmd(cmd);
+            Logger.LogTrace($"data: {Convert.ToHexString(data)}");
+            var sent = await S.SendAsync(data, SocketFlags.None, cancellationToken);
+            Logger.LogTrace($"Sent: {sent}");
             return true;
         }
         catch(Exception ex)
         {
-            L.LogError(ex.Message);
+            Logger.LogError(ex.Message);
             return false;
         }
     }
@@ -147,12 +148,12 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
         try
         {
             byte[] buffer = new byte[1];
-            s.Receive(buffer);
-            return cmd(buffer);
+            S.Receive(buffer);
+            return CmdFromBB(buffer);
         }
         catch (Exception e)
         {
-            L.LogError(e.Message);
+            Logger.LogError(e.Message);
             return Error;
         }
     }
@@ -160,23 +161,25 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
     {
         try
         {
-            s.Send(bytes(cmd));
+            S.Send(BBFromCmd(cmd));
             return true;
         }
         catch (Exception e){
-            L.LogError(e.Message);
+            Logger.LogError(e.Message);
             return false;
         }
     }
 
     public void Dispose()
     {
-        s?.Dispose();
+        S?.Dispose();
+        GC.SuppressFinalize(this);
     }
 
     public ValueTask DisposeAsync()
     {
-        s?.Dispose();
+        S?.Dispose();
+        GC.SuppressFinalize(this);
         return ValueTask.CompletedTask;
     }
 
