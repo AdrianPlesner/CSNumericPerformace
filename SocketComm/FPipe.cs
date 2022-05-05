@@ -14,11 +14,11 @@ using static Cmd;
 public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnumerable<Cmd>
 {
     public ILogger<FPipe> L { get; }
-    Socket FileSocket;
     Socket s;
 
     public FPipe(string file, ILogger<FPipe> logger = default)
     {
+
         this.L = logger ?? (LoggerFactory.Create(b => {
             b.AddConsole();
         }).CreateLogger<FPipe>());
@@ -34,6 +34,7 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
         }
         else
         {
+            Socket FileSocket;
             L.LogInformation("Serving...");
             FileSocket = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
             FileSocket.Bind(ep);
