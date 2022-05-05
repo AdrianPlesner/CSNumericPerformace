@@ -13,7 +13,7 @@ using static Cmd;
 
 public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnumerable<Cmd>
 {
-    public ILogger<FPipe> L { get; }
+    ILogger<FPipe> L { get; }
     Socket s;
 
     public FPipe(string file, ILogger<FPipe> logger = default)
@@ -49,23 +49,25 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
 
     }
     const Int32 MagicHandshakeValue = 25;
-
-    public async Task ShakeHandsAsync(Socket socket)
+    Cmd cmd(byte[] buffer)
     {
-        var data = BitConverter.GetBytes(MagicHandshakeValue);
-        await socket.SendAsync(data, SocketFlags.None);
-        await socket.ReceiveAsync(data, SocketFlags.None);
-        ValidateHandshake(data);
+        sbyte result = (sbyte)buffer[0];
+        return (Cmd)result;
     }
-
+    byte[] bytes(Cmd c)
+    {
+        var b = new byte[] { (byte)c };
+        L.LogTrace($"{nameof(bytes)}: {c} ==> {Convert.ToHexString(b)} ({b.Length}b)");
+        return b;
+    }
     void ValidateHandshake(byte[] data)
     {
         Int32 result = BitConverter.ToInt32(data);
         //L.LogInformation($"[{nameof(ShakeHands)}]: {MagicHandshakeValue}/{result}");
-        byte[] rev = new byte[data.Length ];
+        byte[] rev = new byte[data.Length];
         Array.Copy(data, rev, rev.Length);
         Array.Reverse(rev);
-        if(result == MagicHandshakeValue)
+        if (result == MagicHandshakeValue)
         {
             L.LogInformation($"Handshake OK {MagicHandshakeValue}/{result}");
             return;
@@ -78,6 +80,14 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
             return;
         }
         throw new InvalidDataException("Bad handshake..." + result);
+    }
+
+    public async Task ShakeHandsAsync(Socket socket)
+    {
+        var data = BitConverter.GetBytes(MagicHandshakeValue);
+        await socket.SendAsync(data, SocketFlags.None);
+        await socket.ReceiveAsync(data, SocketFlags.None);
+        ValidateHandshake(data);
     }
 
     public void ShakeHands(Socket socket)
@@ -101,11 +111,6 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
         ValidateHandshake(data);
     }
 
-    Cmd cmd(byte[] buffer)
-    {
-        sbyte result = (sbyte)buffer[0];
-        return (Cmd)result;
-    }
     public async Task<Cmd> ReadCmdAsync(CancellationToken ct = default)
     {
         try
@@ -135,12 +140,6 @@ public class FPipe : IDisposable, IAsyncDisposable, IEnumerable<Cmd>, IAsyncEnum
             L.LogError(ex.Message);
             return false;
         }
-    }
-
-    byte[] bytes(Cmd c) {
-        var b = new byte[] { (byte)c };
-        L.LogTrace($"{nameof(bytes)}: {c} ==> {Convert.ToHexString(b)} ({b.Length}b)");
-        return b;
     }
 
     public Cmd ReadCmd()
