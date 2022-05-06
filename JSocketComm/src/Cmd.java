@@ -3,16 +3,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Cmd {
-    Unkown(-3),
-    Error(-2),
-    Stopped(-1),
-    Exit(0),
-    Go(1),
-    Done(2),
-    Ready(3),
-    Ok(4);
-    private static final Map<Integer, Cmd> VALUE_TO_ENUM_MAP;
-    private final int value;
+    Unkown((byte)-3),
+    Error((byte)-2),
+    Stopped((byte)-1),
+    Exit((byte)0),
+    Go((byte)1),
+    Done((byte)2),
+    Ready((byte)3),
+    Ok((byte)4);
+    private static final Map<Byte, Cmd> VALUE_TO_ENUM_MAP;
+    private final byte value;
 
     static {
         VALUE_TO_ENUM_MAP = new HashMap<>();
@@ -21,16 +21,14 @@ public enum Cmd {
         }
     }
 
-    private Cmd(int value) {
+    private Cmd(byte value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public byte getValue() {
         return value;
     }
-
-    public static Cmd forValue(int value) {
+    public static Cmd forValue(byte value) {
         return VALUE_TO_ENUM_MAP.get(value);
     }
-
 }

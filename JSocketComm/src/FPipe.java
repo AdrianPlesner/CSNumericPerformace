@@ -18,6 +18,7 @@ public class FPipe {
     SocketChannel channel;
 
     public FPipe(String file) throws IOException {
+
         UnixDomainSocketAddress address = UnixDomainSocketAddress.of(file);
         if (Files.exists(Path.of(file)))
         {
@@ -41,7 +42,8 @@ public class FPipe {
     }
 
     public void WriteCmd(Cmd cmd) throws IOException, ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("WriteCmd not implemented");
+        ByteBuffer bb = ByteBuffer.allocate(1);
+
     }
 
     public void ShakeHands(SocketChannel channel) throws IOException
@@ -65,5 +67,4 @@ public class FPipe {
         bb.rewind().putInt(MagicHandshakeValue).rewind();
         channel.write(bb);
     }
-
 }
