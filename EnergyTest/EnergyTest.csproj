@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CsharpRAPL" Version="0.2.8" />
+      <PackageReference Include="CsharpRAPL" Version="0.2.12" />
     </ItemGroup>
 
 </Project>

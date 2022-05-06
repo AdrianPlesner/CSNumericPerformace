@@ -12,8 +12,9 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Iterator;
 
-public class FPipe {
+public class FPipe implements AutoCloseable, Iterable<Cmd> {
     final int MagicHandshakeValue = 25;
     SocketChannel channel;
 
@@ -24,13 +25,18 @@ public class FPipe {
         {
             channel = SocketChannel.open(StandardProtocolFamily.UNIX);
             channel.connect(address);
+            System.out.println("handshake...");
             ShakeHands(channel);
+            System.out.println("done");
         } else{
             ServerSocketChannel ss = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
             ss.bind(address);
             channel = ss.accept();
             ss.close();
+            System.out.println("handshake...");
             ReceiveHand(channel);
+            System.out.println("done");
+
         }
     }
 
@@ -41,10 +47,11 @@ public class FPipe {
         return Cmd.forValue(bb.get(0));
     }
 
-    public void WriteCmd(Cmd cmd) throws IOException, ExecutionControl.NotImplementedException {
+    public void WriteCmd(Cmd cmd) throws IOException{
         ByteBuffer bb = ByteBuffer.allocate(1);
-
+        channel.write(bb.put(cmd.getValue()).rewind());
     }
+
 
     public void ShakeHands(SocketChannel channel) throws IOException
     {
@@ -66,5 +73,36 @@ public class FPipe {
         System.out.println("chk: received:"+rec+", expected: "+MagicHandshakeValue);
         bb.rewind().putInt(MagicHandshakeValue).rewind();
         channel.write(bb);
+    }
+
+    @Override
+    public void close() throws Exception {
+        if(channel!=null)
+            channel.close();
+    }
+
+    @Override
+    public Iterator<Cmd> iterator() {
+
+
+        return new Iterator<Cmd>() {
+            boolean reachedEnd = false;
+            Cmd current = Cmd.Ok;
+            @Override
+            public boolean hasNext(){
+                return current.getValue()>Cmd.Exit.getValue();
+            }
+
+            @Override
+            public Cmd next() {
+                try {
+
+                    current = ReadCmd();
+                } catch (IOException e){
+                    current = Cmd.Error;
+                }
+                return current;
+            }
+        };
     }
 }
