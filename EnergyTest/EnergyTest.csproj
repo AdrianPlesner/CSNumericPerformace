@@ -12,4 +12,9 @@
       <PackageReference Include="CsharpRAPL" Version="0.2.12" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Benchmarks\C" />
+      <Folder Include="Benchmarks\Java" />
+    </ItemGroup>
+
 </Project>

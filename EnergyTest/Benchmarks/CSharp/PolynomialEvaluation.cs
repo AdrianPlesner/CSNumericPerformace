@@ -17,8 +17,8 @@ public class PolynomialEvaluation
         for (ulong n = 0; n < LoopIterations; n++)
         {
             double res = 0.0;
-            for (int i=0; i<cs.Length; i++)
-                res = cs[i] + x * res;
+            foreach (var t in cs)
+                res = t + x * res;
             result += res;
         }
         return result;

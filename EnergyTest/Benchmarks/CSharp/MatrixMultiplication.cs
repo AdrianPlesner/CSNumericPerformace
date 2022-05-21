@@ -13,7 +13,8 @@ public class MatrixMultiplication
     static double[,] R = new double[size,size], A = InitMatrix(size), B = InitMatrix(size);
     static double[][] RR = InitArray(size, true), AA = InitArray(size), BB = InitArray(size);
 
-    private static int aCols = A.GetLength(1),
+    private static int 
+        aCols = A.GetLength(1),
         rRows = R.GetLength(0),
         rCols = R.GetLength(1),
         bCols = B.GetLength(1);
