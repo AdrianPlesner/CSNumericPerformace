@@ -5,10 +5,6 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnergyTest", "EnergyTest\EnergyTest.csproj", "{E05B9BFD-45AB-486F-B722-A5F986FCA75E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketComm", "SocketComm\SocketComm.csproj", "{36C0F37D-FB48-4D11-9EDD-A521686DEAC9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketComm.PingPong", "SocketComm.PingPong\SocketComm.PingPong.csproj", "{0CB9DE75-015B-4B4B-94AD-22D2B872914A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{E05B9BFD-45AB-486F-B722-A5F986FCA75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E05B9BFD-45AB-486F-B722-A5F986FCA75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E05B9BFD-45AB-486F-B722-A5F986FCA75E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36C0F37D-FB48-4D11-9EDD-A521686DEAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36C0F37D-FB48-4D11-9EDD-A521686DEAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36C0F37D-FB48-4D11-9EDD-A521686DEAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36C0F37D-FB48-4D11-9EDD-A521686DEAC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0CB9DE75-015B-4B4B-94AD-22D2B872914A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CB9DE75-015B-4B4B-94AD-22D2B872914A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CB9DE75-015B-4B4B-94AD-22D2B872914A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CB9DE75-015B-4B4B-94AD-22D2B872914A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
