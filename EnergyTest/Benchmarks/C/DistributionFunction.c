@@ -2,13 +2,14 @@
 #include <math.h>
 
 
+
 double F(double z) {
-    double p, zabs = fabs(z);
+    double p, zabs = fabs(z), cutoff = 7.071, root2pi = sqrt(2 * M_PI);
     if (zabs > 37)
         p = 0;
     else { // |z| <= 37
         double expntl = exp(zabs * zabs * -.5);
-        double pdf = expntl / root2pi;
+        double pdf = expntl / root2pi ;
         if (zabs < cutoff) // |z| < CUTOFF = 10/sqrt(2)
             p = expntl * ((((((p6 * zabs + p5) * zabs + p4) * zabs + p3) * zabs
                             + p2) * zabs + p1) * zabs + p0) / (((((((q7 * zabs + q6) *

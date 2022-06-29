@@ -5,7 +5,7 @@ public class DistributionFunctionEvaluation
     public static ulong Iterations;
     public static ulong LoopIterations;
 
-    private static double cutoff = 7.071, root2pi;
+    private static double cutoff = 7.071, root2pi = Math.Sqrt(2 * Math.PI);
     private static double p0, p1, p2, p3, p4, p5, p6, q0, q1, q2, q3, q4, q5, q6, q7;
 
     public double Evaluate()
