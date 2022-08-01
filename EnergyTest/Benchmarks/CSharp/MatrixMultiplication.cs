@@ -9,7 +9,6 @@ public class MatrixMultiplication
     
     //Initialize arrays
     static int size = 80;
-    static readonly Random r = new();
     static double[,] R = new double[size,size], A = InitMatrix(size), B = InitMatrix(size);
     static double[][] RR = InitArray(size, true), AA = InitArray(size), BB = InitArray(size);
 
@@ -27,7 +26,7 @@ public class MatrixMultiplication
         {
             for (var j = 0; j < size; j++)
             {
-                result[i, j] = r.NextDouble();
+                result[i, j] = i + j;
             }
         }
         return result;
@@ -41,7 +40,7 @@ public class MatrixMultiplication
             var row = new double[size];
             for (var j = 0; j < size; j++)
             {
-                row[j] = zero ? 0 : r.NextDouble();
+                row[j] = zero ? 0 : i+j;
             }
 
             result[i] = row;
