@@ -49,7 +49,7 @@ public class MatrixMultiplication
         return result;
     }
 
-    [Benchmark("Matrix multiplication", "Straightforward matrix multiplication")]
+    [Benchmark("Matrix multiplication", "Straightforward matrix multiplication", name:"C# standard")]
     public static double[,] Standard()
     {
         for (ulong i = 0; i < LoopIterations; i++)
@@ -68,7 +68,7 @@ public class MatrixMultiplication
         return R;
     }
 
-    [Benchmark("Matrix multiplication", "Unsafe matrix multiplication")]
+    [Benchmark("Matrix multiplication", "Unsafe matrix multiplication", name:"C# unsafe")]
     public static double[,] Unsafe()
     {
         for (ulong i = 0; i < LoopIterations; i++)
@@ -89,7 +89,7 @@ public class MatrixMultiplication
         return R;
     }
 
-    [Benchmark("Matrix multiplication", "Java like matrix multiplication")]
+    [Benchmark("Matrix multiplication", "Java like matrix multiplication", name:"C# Java like")]
     public static double[][] JavaLike()
     {
         for (ulong i = 0; i < LoopIterations; i++)

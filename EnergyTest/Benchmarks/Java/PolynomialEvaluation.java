@@ -11,12 +11,9 @@ public class PolynomialEvaluation {
     public static double HornersRule()
     {
         double result = 0.0;
-        for (long n = 0; n < LoopIterations; n++)
-        {
-            double res = 0.0;
-            for (double c : cs) res = c + x * res;
-            result += res;
-        }
+        double res = 0.0;
+        for (double c : cs) res = c + x * res;
+        result += res;
         return result;
     }
 }

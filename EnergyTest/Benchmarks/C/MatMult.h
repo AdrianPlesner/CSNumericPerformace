@@ -7,6 +7,6 @@ static long LoopIterations = 1;
 static const int size = 80;
 
 double* InitArray(int size);
-double* FlatArray();
+void FlatArray();
 
 #endif //C_MATMULT_H

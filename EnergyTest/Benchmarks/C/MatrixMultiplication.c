@@ -15,7 +15,7 @@ double* InitArray(const int size){
 /***
  * Benchmark for Matrix multiplication
  */
-double* FlatArray(){
+void FlatArray(){
     double* A = InitArray(size);
     double* B = InitArray(size);
     double* R = (double*) calloc(size * size, sizeof(double));
@@ -32,5 +32,5 @@ double* FlatArray(){
     }
     free(A);
     free(B);
-    return R;
+    free(R);
 }
