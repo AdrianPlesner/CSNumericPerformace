@@ -1,4 +1,3 @@
-import java.util.Random;
 
 public class MatrixMultiplication {
     public static long Iterations;
@@ -13,10 +12,9 @@ public class MatrixMultiplication {
 
     private static double [][] InitMatrix(int size){
         var result = new double [size][size];
-        var r = new Random();
         for(var i = 0; i < size; i++){
             for(var j = 0;  j < size; j++){
-                result[i][j] = r.nextDouble();
+                result[i][j] = i+j;
             }
         }
         return result;
@@ -24,9 +22,11 @@ public class MatrixMultiplication {
 
     private static double[] InitArray(int size){
         var result = new double[size*size];
-        var r = new Random();
-        for(var i = 0; i < result.length; i++){
-            result[i] = r.nextDouble();
+        for(var i = 0; i < size; i++){
+            var offset = size * i;
+            for(var j = 0; j < size; j++){
+                result[offset + j] = i+j;
+            }
         }
         return result;
     }
