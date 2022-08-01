@@ -1,21 +1,13 @@
 #include <stdlib.h>
-#include <time.h>
 #include "MatMult.h"
-
-
-double randfrom(double min, double max)
-{
-    srand (time ( NULL));
-    double range = (max - min);
-    double div = RAND_MAX / range;
-    return min + (rand() / div);
-}
-
 
 double* InitArray(const int size){
     double* result = (double*) malloc(size * size * sizeof(double));
-    for(int i = 0; i < size * size; i++){
-        result[i] = randfrom(0.0, 1.0);
+    for(int i = 0; i < size; i++){
+        int offset = i * size;
+        for(int j = 0; j < size; j++){
+            result[offset + j] = i + j;
+        }
     }
     return result;
 }
