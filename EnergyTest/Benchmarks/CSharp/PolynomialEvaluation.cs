@@ -10,7 +10,7 @@ public class PolynomialEvaluation
     private static readonly double[] cs = { 1.1, -2.2, 3.3, -4.4, 5.5, -6.6, 7.7, -8.8, 9.9};
     private static readonly double x = 5.5;
 
-    [Benchmark("Polynomial evaluation","C#", name:"C#")]
+    [Benchmark("Polynomial evaluation","Polynomial evaluation", name:"C sharp")]
     public static double HornersRule()
     {
         double result = 0.0;

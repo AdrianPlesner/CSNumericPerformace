@@ -1,3 +1,4 @@
+package JavaRun;
 
 public class MatrixMultiplication {
     public static long Iterations;
@@ -35,7 +36,7 @@ public class MatrixMultiplication {
      * Benchmark for matrix multiplication using double arrays
      *
      */
-    public static double [][] DoubleArray(){
+    public static void DoubleArray(){
         for (int r=0; r<rRows; r++) {
             double[] Ar = A[r], Rr = R[r];
             for (int c=0; c<rCols; c++) {
@@ -45,14 +46,13 @@ public class MatrixMultiplication {
                 Rr[c] = sum;
             }
         }
-        return R;
     }
 
     /***
      * Benchmark for matrix multiplication with C style flat array
      *
      */
-    public static double [] FlatArray(){
+    public static void FlatArray(){
         for(var r = 0; r < size; r++){
             for(var c = 0; c < size; c++){
                 double sum = 0.0;
@@ -62,6 +62,5 @@ public class MatrixMultiplication {
                 fR[r*size + c] = sum;
             }
         }
-        return fR;
     }
 }

@@ -1,6 +1,5 @@
-#include "DistributionFunction.h"
 #include <math.h>
-
+#include "DistributionFunction.h"
 
 
 double F(double z) {

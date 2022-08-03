@@ -1,4 +1,5 @@
-﻿using CsharpRAPL.Benchmarking;
+﻿using System.Diagnostics;
+using CsharpRAPL.Benchmarking;
 using System.Reflection;
 using SocketComm;
 
@@ -17,7 +18,19 @@ namespace SampleBenchmark
 
         public IpcState Initialize(IBenchmark benchmark)
         {
-            var pipe = new FPipe(BenchmarkedMethod.Name+".pipe");
+            
+            var file = "/tmp/" + BenchmarkedMethod.Name + ".pipe";
+            ProcessStartInfo startinfo;
+            if(BenchmarkedMethod.Name.StartsWith("C"))
+                startinfo = new ProcessStartInfo("Crun");
+            else
+            {
+                startinfo = new ProcessStartInfo("java", "-jar JavaRun.jar ");
+            }
+            startinfo.UseShellExecute = true;
+            startinfo.Arguments += file;
+            Process.Start(startinfo);
+            var pipe = new FPipe(file);
             pipe.ExpectReady();
             return new IpcState(pipe);            
         }

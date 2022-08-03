@@ -1,3 +1,5 @@
+package JavaRun;
+
 public class PolynomialEvaluation {
     public static long Iterations;
     public static long LoopIterations;
@@ -8,12 +10,11 @@ public class PolynomialEvaluation {
     /***
      * Benchmark for Polynomial evaluation using horners rule
      */
-    public static double HornersRule()
+    public static void HornersRule()
     {
         double result = 0.0;
         double res = 0.0;
         for (double c : cs) res = c + x * res;
         result += res;
-        return result;
     }
 }

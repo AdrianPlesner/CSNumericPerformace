@@ -4,7 +4,7 @@
 
 #include "PolynomialEvaluation.h"
 
-static double HornersRule()
+double HornersRule()
 {
     double result = 0.0;
 

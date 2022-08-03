@@ -1,3 +1,5 @@
+package JavaRun;
+
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;

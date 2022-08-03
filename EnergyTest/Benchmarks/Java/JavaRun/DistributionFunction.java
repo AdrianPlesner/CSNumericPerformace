@@ -1,25 +1,37 @@
+package JavaRun;
+
 public class DistributionFunction {
     public static long Iterations;
     public static long LoopIterations;
 
     private static double cutoff = 7.071, root2pi = Math.sqrt(2 * Math.PI);
-    private static double p0, p1, p2, p3, p4, p5, p6, q0, q1, q2, q3, q4, q5, q6, q7;
+    private static double p0 = 220.2068679123761,
+                                  p1 = 221.2135961699311,
+                                  p2 = 112.0792914978709, 
+                                  p3 = 33.912866078383,
+                                  p4 = 6.37396220353165,
+                                  p5 = .7003830644436881,
+                                  p6 = .03526249659989109, 
+                                  q0 = 440.4137358247522,
+                                  q1 = 793.8265125199484,
+                                  q2 = 637.3336333788311,
+                                  q3 = 296.5642487796737,
+                                  q4 = 86.78073220294608,
+                                  q5 = 16.06417757920695,
+                                  q6 = 1.755667163182642,
+                                  q7 = .08838834764831844;
 
-    public double Evaluate()
+    public static void Evaluate()
     {
         var result = 0.0;
-        for (long i = 0; i < LoopIterations; i++)
-        {
-            result += F(5);
-        }
 
-        return result;
+        result += F(5);
     }
 
     /***
      * Benchmark for Distribution Function Evaluation
      */
-    private double F(double z) {
+    private static double F(double z) {
         double p, zabs = Math.abs(z);
         if (zabs > 37)
             p = 0;

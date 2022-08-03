@@ -6,9 +6,9 @@ public class DivisionLoop
 {
     public static ulong Iterations;
     public static ulong LoopIterations;
-    private static readonly int M = 20;
+    private static readonly int M = 50;
 
-    [Benchmark("Division intensive loop","C#", name:"C#")]
+    [Benchmark("Division intensive loop","Division intensive loop in C#", name:"C sharp")]
     public static long LeastInteger()
     {
         long result = 0;

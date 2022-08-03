@@ -5,15 +5,19 @@ namespace EnergyTest.Benchmarks;
 
 public class JavaBenchmarks
 {
-    [Benchmark("Matrix multiplication", "Matrix multiplication using array of arrays in JAva", typeof(IpcBenchmarkLifecycle), name:"Java double array")]
-    public static IpcState JavaMatrixMultDoubleArray(IpcState s) => s;
+    [Benchmark("Matrix multiplication", "Matrix multiplication in Java using array of arrays", typeof(IpcBenchmarkLifecycle), name:"Java double array")]
+    public static IpcState JavaMatMultDoubleArray(IpcState s) => s;
     
-    [Benchmark("Matrix multiplication", "Matrix multiplication using flat array in Java", typeof(IpcBenchmarkLifecycle), name:"Java falt array")]
-    public static IpcState JavaMatrixMultFlatArray(IpcState s) => s;
+    [Benchmark("Matrix multiplication", "Matrix multiplication in Java using flat array", typeof(IpcBenchmarkLifecycle), name:"Java flat array")]
+    public static IpcState JavaMatMultFlatArray(IpcState s) => s;
     
     [Benchmark("Division intensive loop", "Division intensive loop in Java", typeof(IpcBenchmarkLifecycle), name:"Java")]
-    public static IpcState JavaDivisionLoop(IpcState s) => s;
+    public static IpcState JavaDivLoop(IpcState s) => s;
     
     [Benchmark("Polynomial evaluation", "Polynomial evaluation in Java", typeof(IpcBenchmarkLifecycle), name:"Java")]
-    public static IpcState JavaPolynomialEvaluation(IpcState s) => s;
+    public static IpcState JavaPolyEval(IpcState s) => s;
+    
+    [Benchmark("Distribution function evaluation", "Distribution function evaluation Java", typeof(IpcBenchmarkLifecycle), name:"Java")]
+    public static IpcState JavaDistFuncEval(IpcState s) => s;
+    
 }

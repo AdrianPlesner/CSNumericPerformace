@@ -1,10 +1,6 @@
-//
-// Created by adrian on 6/29/22.
-//
-
 #include "DivisionLoop.h"
 
-static long LeastInteger()
+void LeastInteger()
 {
     long result = 0;
 
@@ -16,5 +12,4 @@ static long LeastInteger()
     }
 
     result += n;
-    return result;
 }
