@@ -5,6 +5,7 @@ namespace EnergyTest.Benchmarks;
 
 public class JavaBenchmarks
 {
+    /*
     [Benchmark("Matrix multiplication", "Matrix multiplication in Java using array of arrays", typeof(IpcBenchmarkLifecycle), name:"Java MM double array")]
     public static IpcState JavaMatMultDoubleArray(IpcState s) => s;
     
@@ -19,5 +20,5 @@ public class JavaBenchmarks
     
     [Benchmark("Distribution function evaluation", "Distribution function evaluation Java", typeof(IpcBenchmarkLifecycle), name:"Java DFE")]
     public static IpcState JavaDistFuncEval(IpcState s) => s;
-    
+    */
 }
