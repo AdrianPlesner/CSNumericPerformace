@@ -24,7 +24,7 @@ public class DistributionFunctionEvaluation
         q6 = 1.755667163182642,
         q7 = .08838834764831844;
 
-    [Benchmark("Distribution function evaluation", "Distribution function evaluation in C#", name:"C sharp DFE")]
+    //[Benchmark("Distribution function evaluation", "Distribution function evaluation in C#", name:"C sharp DFE")]
     public double Evaluate()
     {
         var result = 0.0;
