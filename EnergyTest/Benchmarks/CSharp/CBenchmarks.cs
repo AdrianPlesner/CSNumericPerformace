@@ -6,7 +6,7 @@ namespace EnergyTest.Benchmarks;
 
 public class CBenchmarks
 {
-    /*
+    
     [Benchmark("Matrix multiplication", "Matrix multiplication in C", typeof(IpcBenchmarkLifecycle), name:"C MM")]
     public static IpcState CMatMult(IpcState s)
     {
@@ -21,5 +21,5 @@ public class CBenchmarks
     
     [Benchmark("Distribution function evaluation", "Distribution function evaluation C", typeof(IpcBenchmarkLifecycle), name:"C DFE")]
     public static IpcState CDistFuncEval(IpcState s) => s;
-*/
+
 }

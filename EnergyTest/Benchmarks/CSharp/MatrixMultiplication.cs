@@ -8,7 +8,7 @@ public class MatrixMultiplication
     public static ulong LoopIterations;
     
     //Initialize arrays
-    static int size = 640;
+    static int size = 80;
     static double[,] R = new double[size,size], A = InitMatrix(size), B = InitMatrix(size);
     static double[][] RR = InitArray(size, true), AA = InitArray(size), BB = InitArray(size);
 

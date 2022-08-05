@@ -10,4 +10,4 @@ var options = CsharpRAPLCLI.Parse(args);
 options.PlotResults = true;
 
 var suite = new BenchmarkCollector(options.Iterations, options.LoopIterations);
-suite.RunAll();
+suite.RunAll(false);
