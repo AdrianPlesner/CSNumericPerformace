@@ -11,7 +11,7 @@ extern char* READY;
 extern char* OK;
 
 typedef enum{
-    Unkown = -3,
+    Unknown = -3,
     Error = -2,
     Stopped = -1,
     Exit = 0,

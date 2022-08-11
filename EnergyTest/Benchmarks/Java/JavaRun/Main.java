@@ -13,6 +13,8 @@ public class Main {
         Thread.sleep(1000);
         int LoopIterations = 10;
         FPipe p = new FPipe(pipe);
+        try{
+
         p.WriteCmd(Cmd.Ready);
         if(pipe.contains("DoubleArray")){
             do {
@@ -24,7 +26,7 @@ public class Main {
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
+            while (p.ExpectCmd(Cmd.Ready) == Cmd.Ready);
         } else if (pipe.contains("FlatArray")) {
             do {
                 p.WriteCmd(Cmd.Ready);
@@ -35,7 +37,7 @@ public class Main {
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
+            while (p.ExpectCmd(Cmd.Ready) == Cmd.Ready);
         } else if (pipe.contains("DivLoop")) {
             do {
                 p.WriteCmd(Cmd.Ready);
@@ -46,7 +48,7 @@ public class Main {
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
+            while (p.ExpectCmd(Cmd.Ready) == Cmd.Ready);
         } else if (pipe.contains("PolyEval")) {
             do {
                 p.WriteCmd(Cmd.Ready);
@@ -57,7 +59,7 @@ public class Main {
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
+            while (p.ExpectCmd(Cmd.Ready) == Cmd.Ready);
         }
         else if(pipe.contains("DistFuncEval")){
             do {
@@ -69,9 +71,13 @@ public class Main {
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
+            while (p.ExpectCmd(Cmd.Ready) == Cmd.Ready);
+        }}
+        catch(PipeCmdException e) {
+            System.out.println("Done!");
+        }finally {
+            p.close();
         }
-        System.out.println("Done!");
-        p.close();
+
     }
 }

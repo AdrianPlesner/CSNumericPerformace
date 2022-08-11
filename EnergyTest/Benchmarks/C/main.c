@@ -36,7 +36,7 @@ int main(int argc, char **argv){
                 }
             }
             writeCmd(s, Done); //
-        } while(expectCmd(s, Ready));
+        } while(expectCmd(s, Ready) == Ready);
     } else if(strstr(pipe,"DivLoop")){
         do{
             writeCmd(s, Ready);
@@ -47,7 +47,7 @@ int main(int argc, char **argv){
                 }
             }
             writeCmd(s, Done); //
-        } while(expectCmd(s, Ready));
+        } while(expectCmd(s, Ready) == Ready);
     } else if(strstr(pipe, "PolyEval")){
         do{
             writeCmd(s, Ready);
@@ -58,7 +58,7 @@ int main(int argc, char **argv){
                 }
             }
             writeCmd(s, Done); //
-        } while(expectCmd(s, Ready));
+        } while(expectCmd(s, Ready) == Ready);
     }
     else if(strstr(pipe,"DistFuncEval")){
         do{
@@ -70,7 +70,7 @@ int main(int argc, char **argv){
                 }
             }
             writeCmd(s, Done); //
-        } while(expectCmd(s, Ready));
+        } while(expectCmd(s, Ready) == Ready);
     }
     // we should have read done at this point
     printf("\ndone\n");

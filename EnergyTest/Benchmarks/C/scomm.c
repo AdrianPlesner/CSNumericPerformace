@@ -13,7 +13,7 @@ void writeCmd(int socket, CMD cmd){
 }
 
 CMD readCmd(int socket){
-    char ch;
+    char ch = -3; //unknown
     printf("Readcmd: ");
     int bytes_read = read(socket, &ch, sizeof(char));
     printf("bytesread: %d -- ", bytes_read);
@@ -21,13 +21,12 @@ CMD readCmd(int socket){
     return (CMD)ch;
 }
 
-int expectCmd(int socket, CMD cmd){
+CMD expectCmd(int socket, CMD cmd){
     CMD read = readCmd(socket);
-    if(read == cmd){
-        return 1;
+    if(read != cmd){
+        fprintf(stderr,"Error: Expected: %d - Received: %d\n", cmd, read);
     }
-    fprintf(stderr,"Error: Expected: %d - Received: %d\n", cmd, read);
-    return 0;
+    return read;
 }
 
 void closeSocket(int socket){

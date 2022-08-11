@@ -2,7 +2,7 @@ using CsharpRAPL.Benchmarking.Attributes;
 using CsharpRAPL.Benchmarking.Lifecycles;
 using SocketComm;
 
-namespace EnergyTest.Benchmarks;
+namespace EnergyTest.Benchmarks.CSharp;
 
 public class JavaBenchmarks
 {
