@@ -11,94 +11,65 @@ public class Main {
         }
         var pipe = args[0];
         Thread.sleep(1000);
+        int LoopIterations = 10;
         FPipe p = new FPipe(pipe);
         p.WriteCmd(Cmd.Ready);
-        Cmd c;
         if(pipe.contains("DoubleArray")){
             do {
                 p.WriteCmd(Cmd.Ready);
-                c = p.ReadCmd();
-                System.out.println("received: " + c);
-                if (c == Cmd.Go){
-                    System.out.println("Running..");
+                p.ExpectCmd(Cmd.Go);
+                System.out.println("Running..");
+                for(int i = 0; i < LoopIterations; i++) {
                     MatrixMultiplication.DoubleArray();
-                }
-                else{
-                    p.WriteCmd(Cmd.Error);
-                    System.out.println("Error expected GO");
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while ((c = p.ReadCmd()) == Cmd.Ready);
-
+            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
         } else if (pipe.contains("FlatArray")) {
             do {
                 p.WriteCmd(Cmd.Ready);
-                c = p.ReadCmd();
-                System.out.println("received: " + c);
-                if (c == Cmd.Go){
-                    System.out.println("Running..");
+                p.ExpectCmd(Cmd.Go);
+                System.out.println("Running..");
+                for(int i = 0; i < LoopIterations; i++) {
                     MatrixMultiplication.FlatArray();
-                }
-                else{
-                    p.WriteCmd(Cmd.Error);
-                    System.out.println("Error expected GO");
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while ((c = p.ReadCmd()) == Cmd.Ready);
-
+            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
         } else if (pipe.contains("DivLoop")) {
             do {
                 p.WriteCmd(Cmd.Ready);
-                c = p.ReadCmd();
-                System.out.println("received: " + c);
-                if (c == Cmd.Go){
-                    System.out.println("Running..");
+                p.ExpectCmd(Cmd.Go);
+                System.out.println("Running..");
+                for(int i = 0; i < LoopIterations; i++) {
                     DivisionLoop.LeastInteger();
-                }
-                else{
-                    p.WriteCmd(Cmd.Error);
-                    System.out.println("Error expected GO");
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while ((c = p.ReadCmd()) == Cmd.Ready);
-
+            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
         } else if (pipe.contains("PolyEval")) {
             do {
                 p.WriteCmd(Cmd.Ready);
-                c = p.ReadCmd();
-                System.out.println("received: " + c);
-                if (c == Cmd.Go){
-                    System.out.println("Running..");
+                p.ExpectCmd(Cmd.Go);
+                System.out.println("Running..");
+                for(int i = 0; i < LoopIterations; i++) {
                     PolynomialEvaluation.HornersRule();
-                }
-                else{
-                    p.WriteCmd(Cmd.Error);
-                    System.out.println("Error expected GO");
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while ((c = p.ReadCmd()) == Cmd.Ready);
-
+            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
         }
         else if(pipe.contains("DistFuncEval")){
             do {
                 p.WriteCmd(Cmd.Ready);
-                c = p.ReadCmd();
-                System.out.println("received: " + c);
-                if (c == Cmd.Go){
-                    System.out.println("Running..");
+                p.ExpectCmd(Cmd.Go);
+                System.out.println("Running..");
+                for(int i = 0; i < LoopIterations; i++) {
                     DistributionFunction.Evaluate();
-                }
-                else{
-                    p.WriteCmd(Cmd.Error);
-                    System.out.println("Error expected GO");
                 }
                 p.WriteCmd(Cmd.Done);
             }
-            while ((c = p.ReadCmd()) == Cmd.Ready);
+            while (p.ExpectCmd(Cmd.Go) == Cmd.Go);
         }
         System.out.println("Done!");
         p.close();

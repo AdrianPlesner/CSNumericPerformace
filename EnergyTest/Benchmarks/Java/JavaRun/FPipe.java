@@ -1,7 +1,4 @@
 package JavaRun;
-
-import JavaRun.Cmd;
-
 import java.io.IOException;
 import java.net.StandardProtocolFamily;
 import java.net.UnixDomainSocketAddress;
@@ -48,6 +45,14 @@ public class FPipe implements AutoCloseable, Iterable<Cmd> {
     public void WriteCmd(Cmd cmd) throws IOException{
         ByteBuffer bb = ByteBuffer.allocate(1);
         channel.write(bb.put(cmd.getValue()).rewind());
+    }
+
+    public Cmd ExpectCmd(Cmd cmd) throws PipeCmdException, IOException {
+        var read = ReadCmd();
+        if(read == cmd){
+            return read;
+        }
+        throw new PipeCmdException(String.format("Expected: %s - Received: %s", cmd, read));
     }
 
 
