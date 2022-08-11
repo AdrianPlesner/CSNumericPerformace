@@ -23,49 +23,54 @@ int main(int argc, char **argv){
         printf("Bad socket...");
         exit(EXIT_FAILURE);
     }
-    CMD c;
     writeCmd(s, Ready);
     int i = 0;
+    int LoopIterations = 10;
     if(strstr(pipe, "MatMult")){
         do{
             writeCmd(s, Ready);
-            c=readCmd(s); // expecting go
-            printf("received (expected go): %s", tos(c));
-            FlatArray();
-            printf("Running iteration %d\n", i++);
+            if(expectCmd(s, Go)){
+                printf("Running iteration %d\n", i++);
+                for(int j = 0; j < LoopIterations; j++) {
+                    FlatArray();
+                }
+            }
             writeCmd(s, Done); //
-        } while ((c = readCmd(s)) == Ready );
-
+        } while(expectCmd(s, Ready));
     } else if(strstr(pipe,"DivLoop")){
         do{
             writeCmd(s, Ready);
-            c=readCmd(s); // expecting go
-            printf("received (expected go): %s", tos(c));
-            LeastInteger();
-            printf("Running iteration %d\n", i++);
+            if(expectCmd(s, Go)){
+                printf("Running iteration %d\n", i++);
+                for(int j = 0; j < LoopIterations; j++) {
+                    LeastInteger();
+                }
+            }
             writeCmd(s, Done); //
-        } while ((c = readCmd(s)) == Ready );
-
+        } while(expectCmd(s, Ready));
     } else if(strstr(pipe, "PolyEval")){
         do{
             writeCmd(s, Ready);
-            c=readCmd(s); // expecting go
-            printf("received (expected go): %s", tos(c));
-            HornersRule();
-            printf("Running iteration %d\n", i++);
+            if(expectCmd(s, Go)){
+                printf("Running iteration %d\n", i++);
+                for(int j = 0; j < LoopIterations; j++) {
+                    HornersRule();
+                }
+            }
             writeCmd(s, Done); //
-        } while ((c = readCmd(s)) == Ready );
-
+        } while(expectCmd(s, Ready));
     }
     else if(strstr(pipe,"DistFuncEval")){
         do{
             writeCmd(s, Ready);
-            c=readCmd(s); // expecting go
-            printf("received (expected go): %s", tos(c));
-            F(5);
-            printf("Running iteration %d\n", i++);
+            if(expectCmd(s, Go)){
+                printf("Running iteration %d\n", i++);
+                for(int j = 0; j < LoopIterations; j++) {
+                    F(5);
+                }
+            }
             writeCmd(s, Done); //
-        } while ((c = readCmd(s)) == Ready );
+        } while(expectCmd(s, Ready));
     }
     // we should have read done at this point
     printf("\ndone\n");

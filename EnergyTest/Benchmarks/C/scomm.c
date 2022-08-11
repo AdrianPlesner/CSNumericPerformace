@@ -21,6 +21,15 @@ CMD readCmd(int socket){
     return (CMD)ch;
 }
 
+int expectCmd(int socket, CMD cmd){
+    CMD read = readCmd(socket);
+    if(read == cmd){
+        return 1;
+    }
+    fprintf(stderr,"Error: Expected: %d - Received: %d\n", cmd, read);
+    return 0;
+}
+
 void closeSocket(int socket){
     close(socket);
 }
