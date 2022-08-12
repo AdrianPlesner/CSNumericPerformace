@@ -1,11 +1,12 @@
 using CsharpRAPL.Benchmarking.Attributes;
+using CsharpRAPL.Benchmarking.Attributes.Parameters;
 
 namespace EnergyTest.Benchmarks;
 
 public class DistributionFunctionEvaluation
 {
-    public static ulong Iterations;
-    public static ulong LoopIterations;
+    /*public static ulong Iterations;
+    public static ulong LoopIterations;*/
 
     private static double cutoff = 7.071, root2pi = Math.Sqrt(2 * Math.PI);
     private static double p0 = 220.2068679123761,
@@ -25,10 +26,10 @@ public class DistributionFunctionEvaluation
         q7 = .08838834764831844;
 
     [Benchmark("Distribution function evaluation", "Distribution function evaluation in C#", name:"C sharp DFE", skip: false)]
-    public double Evaluate()
+    public double Evaluate([BenchmarkLoopiterations]ulong loopIterations)
     {
         var result = 0.0;
-        for (ulong i = 0; i < LoopIterations; i++)
+        for (ulong i = 0; i < loopIterations; i++)
         {
             result += F(5);
         }

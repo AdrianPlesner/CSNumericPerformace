@@ -1,11 +1,12 @@
 using CsharpRAPL.Benchmarking.Attributes;
+using CsharpRAPL.Benchmarking.Attributes.Parameters;
 
 namespace EnergyTest.Benchmarks;
 
 public class MatrixMultiplication
 {
-    public static ulong Iterations;
-    public static ulong LoopIterations;
+    /*public static ulong Iterations;
+    public static ulong LoopIterations;*/
     
     //Initialize arrays
     static int size = 80;
@@ -50,7 +51,7 @@ public class MatrixMultiplication
     }
 
     [Benchmark("Matrix multiplication", "Matrix multiplication in C# using 2D array", name:"Cs MM standard", skip: false)]
-    public static double[,] Standard()
+    public static double[,] Standard([BenchmarkLoopiterations] ulong LoopIterations)
     {
         for (ulong i = 0; i < LoopIterations; i++)
         {
@@ -69,7 +70,7 @@ public class MatrixMultiplication
     }
 
     [Benchmark("Matrix multiplication", "Matrix multiplication in C# using unsafe", name:"Cs MM unsafe", skip: false)]
-    public static double[,] Unsafe()
+    public static double[,] Unsafe([BenchmarkLoopiterations] ulong LoopIterations)
     {
         for (ulong i = 0; i < LoopIterations; i++)
         {
@@ -90,7 +91,7 @@ public class MatrixMultiplication
     }
 
     [Benchmark("Matrix multiplication", "Matrix multiplication in C# using Java Like array", name:"Cs MM Java like", skip: false)]
-    public static double[][] LikeJava()
+    public static double[][] LikeJava([BenchmarkLoopiterations] ulong LoopIterations)
     {
         for (ulong i = 0; i < LoopIterations; i++)
         {

@@ -21,7 +21,7 @@ public class Main {
                 p.WriteCmd(Cmd.Ready);
                 p.ExpectCmd(Cmd.Go);
                 System.out.println("Running..");
-                for(int i = 0; i < LoopIterations; i++) {
+                for(int i = 0; i < 512; i++) {
                     MatrixMultiplication.DoubleArray();
                 }
                 p.WriteCmd(Cmd.Done);
@@ -32,7 +32,7 @@ public class Main {
                 p.WriteCmd(Cmd.Ready);
                 p.ExpectCmd(Cmd.Go);
                 System.out.println("Running..");
-                for(int i = 0; i < LoopIterations; i++) {
+                for(int i = 0; i < 512; i++) {
                     MatrixMultiplication.FlatArray();
                 }
                 p.WriteCmd(Cmd.Done);
@@ -43,7 +43,7 @@ public class Main {
                 p.WriteCmd(Cmd.Ready);
                 p.ExpectCmd(Cmd.Go);
                 System.out.println("Running..");
-                for(int i = 0; i < LoopIterations; i++) {
+                for(int i = 0; i < 1; i++) {
                     DivisionLoop.LeastInteger();
                 }
                 p.WriteCmd(Cmd.Done);
@@ -54,7 +54,7 @@ public class Main {
                 p.WriteCmd(Cmd.Ready);
                 p.ExpectCmd(Cmd.Go);
                 System.out.println("Running..");
-                for(int i = 0; i < LoopIterations; i++) {
+                for(int i = 0; i < 67108864; i++) {
                     PolynomialEvaluation.HornersRule();
                 }
                 p.WriteCmd(Cmd.Done);
@@ -66,7 +66,7 @@ public class Main {
                 p.WriteCmd(Cmd.Ready);
                 p.ExpectCmd(Cmd.Go);
                 System.out.println("Running..");
-                for(int i = 0; i < LoopIterations; i++) {
+                for(int i = 0; i < 33554432; i++) {
                     DistributionFunction.Evaluate();
                 }
                 p.WriteCmd(Cmd.Done);

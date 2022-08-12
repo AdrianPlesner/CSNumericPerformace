@@ -1,15 +1,16 @@
 using CsharpRAPL.Benchmarking.Attributes;
+using CsharpRAPL.Benchmarking.Attributes.Parameters;
 
 namespace EnergyTest.Benchmarks;
 
 public class DivisionLoop
 {
-    public static ulong Iterations;
-    public static ulong LoopIterations;
+    /*public static ulong Iterations;
+    public static ulong LoopIterations;*/
     private static readonly int M = 20;
 
     [Benchmark("Division intensive loop","Division intensive loop in C#", name:"C sharp DIL", skip: false)]
-    public static long LeastInteger()
+    public static long LeastInteger([BenchmarkLoopiterations] ulong LoopIterations)
     {
         long result = 0;
         

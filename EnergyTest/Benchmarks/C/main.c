@@ -31,7 +31,7 @@ int main(int argc, char **argv){
             writeCmd(s, Ready);
             if(expectCmd(s, Go)){
                 printf("Running iteration %d\n", i++);
-                for(int j = 0; j < LoopIterations; j++) {
+                for(int j = 0; j < 512; j++) {
                     FlatArray();
                 }
             }
@@ -42,7 +42,7 @@ int main(int argc, char **argv){
             writeCmd(s, Ready);
             if(expectCmd(s, Go)){
                 printf("Running iteration %d\n", i++);
-                for(int j = 0; j < LoopIterations; j++) {
+                for(int j = 0; j < 1; j++) {
                     LeastInteger();
                 }
             }
@@ -53,7 +53,7 @@ int main(int argc, char **argv){
             writeCmd(s, Ready);
             if(expectCmd(s, Go)){
                 printf("Running iteration %d\n", i++);
-                for(int j = 0; j < LoopIterations; j++) {
+                for(int j = 0; j < 67108864; j++) {
                     HornersRule();
                 }
             }
@@ -65,7 +65,7 @@ int main(int argc, char **argv){
             writeCmd(s, Ready);
             if(expectCmd(s, Go)){
                 printf("Running iteration %d\n", i++);
-                for(int j = 0; j < LoopIterations; j++) {
+                for(int j = 0; j < 33554432; j++) {
                     F(5);
                 }
             }
