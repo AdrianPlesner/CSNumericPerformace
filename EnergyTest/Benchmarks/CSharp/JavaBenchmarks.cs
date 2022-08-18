@@ -3,23 +3,67 @@ using CsharpRAPL.Benchmarking.Lifecycles;
 using SocketComm;
 
 namespace EnergyTest.Benchmarks.CSharp;
-
 public class JavaBenchmarks
 {
-    
-    [Benchmark("Matrix multiplication", "Matrix multiplication in Java using array of arrays", typeof(IpcBenchmarkLifecycle), name:"Java MM double array", skip: false, loopIterations: 512 )]
-    public static FPipe JavaMatMultDoubleArray(FPipe s) => s;
-    
-    [Benchmark("Matrix multiplication", "Matrix multiplication in Java using flat array", typeof(IpcBenchmarkLifecycle), name:"Java MM flat array", skip: false, loopIterations: 512)]
-    public static FPipe JavaMatMultFlatArray(FPipe s) => s;
-    
-    [Benchmark("Division intensive loop", "Division intensive loop in Java", typeof(IpcBenchmarkLifecycle), name:"Java DIL", skip: false, loopIterations:1)]
-    public static FPipe JavaDivLoop(FPipe s) => s;
-    
-    [Benchmark("Polynomial evaluation", "Polynomial evaluation in Java", typeof(IpcBenchmarkLifecycle), name:"Java PE", skip: false, loopIterations:67108864)]
-    public static FPipe JavaPolyEval(FPipe s) => s;
-    
-    [Benchmark("Distribution function evaluation", "Distribution function evaluation Java", typeof(IpcBenchmarkLifecycle), name:"Java DFE", skip: false, loopIterations:33554432)]
-    public static FPipe JavaDistFuncEval(FPipe s) => s;
+
+    [Benchmark("Matrix multiplication", "Matrix multiplication in Java using array of arrays",
+        typeof(IpcBenchmarkLifecycle), name: "Java MM double array", skip: false, loopIterations: 512)]
+    public static JavaState JavaMatMultDoubleArray(IpcState s)
+    {
+        return new JavaState(s.PipePath)
+        {
+            LibPath = "Benchmarks/Java",
+            JavaFile = "MatrixMultiplication.java",
+            BenchmarkSignature = "MatrixMultiplication.DoubleArray();"
+        };
+    }
+
+    [Benchmark("Matrix multiplication", "Matrix multiplication in Java using flat array",
+        typeof(IpcBenchmarkLifecycle), name: "Java MM flat array", skip: false, loopIterations: 512)]
+    public static JavaState JavaMatMultFlatArray(IpcState s)
+    {
+        return new JavaState(s.PipePath)
+        {
+            LibPath = "Benchmarks/Java",
+            JavaFile = "MatrixMultiplication.java",
+            BenchmarkSignature = "MatrixMultiplication.FlatArray();"
+        };
+    }
+
+    [Benchmark("Division intensive loop", "Division intensive loop in Java", typeof(IpcBenchmarkLifecycle),
+        name: "Java DIL", skip: false, loopIterations: 1)]
+    public static JavaState JavaDivLoop(IpcState s)
+    {
+        return new JavaState(s.PipePath)
+        {
+            LibPath = "Benchmarks/Java",
+            JavaFile = "DivisionLoop.java",
+            BenchmarkSignature = "DivisionLoop.LeastInteger();"
+        };
+    }
+
+    [Benchmark("Polynomial evaluation", "Polynomial evaluation in Java", typeof(IpcBenchmarkLifecycle),
+        name: "Java PE", skip: false, loopIterations: 67108864)]
+    public static JavaState JavaPolyEval(IpcState s)
+    {
+        return new JavaState(s.PipePath)
+        {
+            LibPath = "Benchmarks/Java",
+            JavaFile = "PolynomialEvaluation.java",
+            BenchmarkSignature = "PolynomialEvaluation.HornersRule();"
+        };
+    }
+
+    [Benchmark("Distribution function evaluation", "Distribution function evaluation Java",
+        typeof(IpcBenchmarkLifecycle), name: "Java DFE", skip: false, loopIterations: 33554432)]
+    public static JavaState JavaDistFuncEval(IpcState s)
+    {
+        return new JavaState(s.PipePath)
+        {
+            LibPath = "Benchmarks/Java",
+            JavaFile = "DistributionFunction.java",
+            BenchmarkSignature = "DistributionFunction.Evaluate();"
+        };
+    }
     
 }

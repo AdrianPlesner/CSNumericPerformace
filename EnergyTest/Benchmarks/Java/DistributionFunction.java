@@ -1,5 +1,3 @@
-package JavaRun;
-
 public class DistributionFunction {
     public static long Iterations;
     public static long LoopIterations;

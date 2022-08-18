@@ -1,6 +1,3 @@
-//
-// Created by adrian on 6/29/22.
-//
 
 #ifndef C_POLYNOMIALEVALUATION_H
 #define C_POLYNOMIALEVALUATION_H

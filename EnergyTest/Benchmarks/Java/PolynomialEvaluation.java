@@ -1,5 +1,3 @@
-package JavaRun;
-
 public class PolynomialEvaluation {
     public static long Iterations;
     public static long LoopIterations;
