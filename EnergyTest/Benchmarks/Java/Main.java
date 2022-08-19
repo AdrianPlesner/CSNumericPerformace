@@ -13,7 +13,7 @@ public class Main {
             p.WriteCmd(Cmd.Ready);
             do {
                 p.WriteCmd(Cmd.Ready);
-                System.out.println("Running..");
+                //System.out.println("Running..");
                 p.ExpectCmd(Cmd.Go);
                 for (int i = 0; i < LoopIterations; i++) {
                     ///Compute benchmark here!

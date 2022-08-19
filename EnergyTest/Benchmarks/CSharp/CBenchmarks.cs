@@ -37,7 +37,7 @@ public class CBenchmarks
     {
         return new CState(s.PipePath)
         {
-            BenchmarkSignature = "InitCS(csSize,&cs);HornersRule(131072);",
+            BenchmarkSignature = "InitCS(csSize,cs);HornersRule(131072);",
             LibPath = "Benchmarks/C",
             HeaderFile = "PolynomialEvaluation.h",
             CFile = "PolynomialEvaluation.c"

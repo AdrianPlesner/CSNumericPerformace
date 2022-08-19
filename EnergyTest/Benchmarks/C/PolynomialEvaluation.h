@@ -4,7 +4,7 @@
 
 
 static const int csSize = 1000;
-const double cs[1000];
+double cs[1000];
 static int length = sizeof cs / sizeof (cs[0]);
 static double x = 5.5;
 

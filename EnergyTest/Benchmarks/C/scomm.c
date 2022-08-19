@@ -14,10 +14,10 @@ void writeCmd(int socket, CMD cmd){
 
 CMD readCmd(int socket){
     char ch = -3; //unknown
-    printf("Readcmd: ");
+    //printf("Readcmd: ");
     int bytes_read = read(socket, &ch, sizeof(char));
-    printf("bytesread: %d -- ", bytes_read);
-    printf("ch: %d\n", ch);
+    //printf("bytesread: %d -- ", bytes_read);
+    //printf("ch: %d\n", ch);
     return (CMD)ch;
 }
 
