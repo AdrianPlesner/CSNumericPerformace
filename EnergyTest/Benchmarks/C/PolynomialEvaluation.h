@@ -4,8 +4,8 @@
 
 
 static const int csSize = 1000;
-double cs[1000];
-static int length = sizeof cs / sizeof (cs[0]);
+double ar[1000];
+static int length = sizeof ar / sizeof (ar[0]);
 static double x = 5.5;
 
 void InitCS(int i, double* result);
