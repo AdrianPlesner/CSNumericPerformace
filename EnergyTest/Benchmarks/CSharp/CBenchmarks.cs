@@ -8,11 +8,11 @@ public class CBenchmarks
 {
     
     [Benchmark("Matrix multiplication", "Matrix multiplication in C",  typeof(IpcBenchmarkLifecycle), 
-        name:"C MM", skip: false, loopIterations:512)]
+        name:"C MM", skip: false, loopIterations:1024)]
     public static CState CMatMult(IpcState s)
     {
         return new CState(s.PipePath) {
-            BenchmarkSignature = "FlatArray(512)",
+            BenchmarkSignature = "FlatArray(1024)",
             LibPath = "Benchmarks/C",
             HeaderFile = "MatMult.h", 
             CFile = "MatrixMultiplication.c"};
@@ -32,12 +32,12 @@ public class CBenchmarks
     }
 
     [Benchmark("Polynomial evaluation", "Polynomial evaluation in C", typeof(IpcBenchmarkLifecycle), name: "C PE",
-        skip: false, loopIterations: 131072)]
+        skip: false, loopIterations: 262144)]
     public static CState CPolyEval(IpcState s)
     {
         return new CState(s.PipePath)
         {
-            BenchmarkSignature = "InitCS();HornersRule(131072);",
+            BenchmarkSignature = "InitCS();HornersRule(262144);",
             LibPath = "Benchmarks/C",
             HeaderFile = "PolynomialEvaluation.h",
             CFile = "PolynomialEvaluation.c"
@@ -45,12 +45,12 @@ public class CBenchmarks
     }
 
     [Benchmark("Distribution function evaluation", "Distribution function evaluation C", typeof(IpcBenchmarkLifecycle),
-        name: "C DFE", skip: false, loopIterations: 8388608)]
+        name: "C DFE", skip: false, loopIterations: 33554432)]
     public static CState CDistFuncEval(IpcState s)
     {
         return new CState(s.PipePath)
         {
-            BenchmarkSignature = "Evaluate(8388608);",
+            BenchmarkSignature = "Evaluate(33554432);",
             LibPath = "Benchmarks/C",
             HeaderFile = "DistributionFunction.h",
             CFile = "DistributionFunction.c",
