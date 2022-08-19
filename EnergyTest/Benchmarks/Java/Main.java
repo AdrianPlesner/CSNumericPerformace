@@ -9,6 +9,7 @@ public class Main {
         var pipe = args[0];
         int LoopIterations = 1;
         FPipe p = new FPipe(pipe);
+        Cmd c = Cmd.Unkown;
         try {
             p.WriteCmd(Cmd.Ready);
             do {
@@ -19,14 +20,15 @@ public class Main {
                     ///Compute benchmark here!
                 }
                 p.WriteCmd(Cmd.Done);
+                c = p.ReadCmd();
             }
-            while (p.ExpectCmd(Cmd.Ready) == Cmd.Ready);
+            while (c == Cmd.Ready);
+            System.out.println("Done!");
         }
         catch(PipeCmdException e) {
-            System.out.println("Done!");
+            System.err.println("An error occurred read: " + c.toString());
         }finally {
             p.close();
         }
-
     }
 }

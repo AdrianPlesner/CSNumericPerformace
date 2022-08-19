@@ -18,6 +18,7 @@ int main(int argc, char **argv){
     }
     writeCmd(s, Ready);
     int LoopIterations = 1;
+    int c;
     do{
         writeCmd(s, Ready);
         if(expectCmd(s, Go)){
@@ -26,7 +27,8 @@ int main(int argc, char **argv){
             }
         }
         writeCmd(s, Done); //
-    } while(expectCmd(s, Ready) == Ready);
+        c = readCmd(s);
+    } while(c == Ready);
     // we should have read done at this point
     printf("\ndone\n");
     closeSocket(s);
