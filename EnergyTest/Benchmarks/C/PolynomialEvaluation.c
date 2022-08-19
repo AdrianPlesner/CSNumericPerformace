@@ -4,6 +4,11 @@
 
 #include "PolynomialEvaluation.h"
 
+static const int csSize = 1000;
+double cs[1000];
+static int length = sizeof cs / sizeof (cs[0]);
+static double x = 5.5;
+
 void InitCS(int i, double* result){
     for (int j = 0; j < i; j++)
     {
@@ -21,7 +26,7 @@ double HornersRule(int LoopIterations)
     for(int j = 0; j < LoopIterations; j++) {
         double res = 0.0;
         for (int i = 0; i < length; i++) {
-            double c = ar[i];
+            double c = cs[i];
             res = c + x * res;
         }
         result += res;
