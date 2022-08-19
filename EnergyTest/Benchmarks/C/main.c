@@ -17,7 +17,7 @@ int main(int argc, char **argv){
         exit(EXIT_FAILURE);
     }
     writeCmd(s, Ready);
-    int LoopIterations = 10;
+    int LoopIterations = 1;
     do{
         writeCmd(s, Ready);
         if(expectCmd(s, Go)){

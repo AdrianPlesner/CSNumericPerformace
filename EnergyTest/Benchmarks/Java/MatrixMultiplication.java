@@ -34,14 +34,16 @@ public class MatrixMultiplication {
      * Benchmark for matrix multiplication using double arrays
      *
      */
-    public static void DoubleArray(){
-        for (int r=0; r<rRows; r++) {
-            double[] Ar = A[r], Rr = R[r];
-            for (int c=0; c<rCols; c++) {
-                double sum = 0.0;
-                for (int k=0; k<aCols; k++)
-                    sum += Ar[k]*B[k][c];
-                Rr[c] = sum;
+    public static void DoubleArray(int LoopIterations){
+        for(int i = 0; i < LoopIterations; i++) {
+            for (int r = 0; r < rRows; r++) {
+                double[] Ar = A[r], Rr = R[r];
+                for (int c = 0; c < rCols; c++) {
+                    double sum = 0.0;
+                    for (int k = 0; k < aCols; k++)
+                        sum += Ar[k] * B[k][c];
+                    Rr[c] = sum;
+                }
             }
         }
     }
@@ -50,14 +52,16 @@ public class MatrixMultiplication {
      * Benchmark for matrix multiplication with C style flat array
      *
      */
-    public static void FlatArray(){
-        for(var r = 0; r < size; r++){
-            for(var c = 0; c < size; c++){
-                double sum = 0.0;
-                for(var k = 0; k < size; k++){
-                    sum += fA[r*size + k] * fB[k * size + c];
+    public static void FlatArray(int LoopIterations) {
+        for (int i = 0; i < LoopIterations; i++) {
+            for (var r = 0; r < size; r++) {
+                for (var c = 0; c < size; c++) {
+                    double sum = 0.0;
+                    for (var k = 0; k < size; k++) {
+                        sum += fA[r * size + k] * fB[k * size + c];
+                    }
+                    fR[r * size + c] = sum;
                 }
-                fR[r*size + c] = sum;
             }
         }
     }

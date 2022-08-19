@@ -1,18 +1,32 @@
 public class PolynomialEvaluation {
-    public static long Iterations;
-    public static long LoopIterations;
 
-    private static double[] cs = { 1.1, -2.2, 3.3, -4.4, 5.5, -6.6, 7.7, -8.8, 9.9};
+    private static double[] cs = InitCS(1000);
     private static double x = 5.5;
+
+    private static double[] InitCS(int i)
+    {
+        var result = new double[i];
+        for (int j = 0; j < i; j++)
+        {
+            result[j] = 1.1 * j;
+            if (j % 3 == 0)
+            {
+                result[j] *= -1;
+            }
+        }
+        return result;
+    }
 
     /***
      * Benchmark for Polynomial evaluation using horners rule
      */
-    public static void HornersRule()
+    public static void HornersRule(int LoopIterations)
     {
         double result = 0.0;
-        double res = 0.0;
-        for (double c : cs) res = c + x * res;
-        result += res;
+        for(int i = 0; i < LoopIterations; i++) {
+            double res = 0.0;
+            for (double c : cs) res = c + x * res;
+            result += res;
+        }
     }
 }

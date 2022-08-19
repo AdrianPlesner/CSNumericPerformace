@@ -19,11 +19,12 @@ public class DistributionFunction {
                                   q6 = 1.755667163182642,
                                   q7 = .08838834764831844;
 
-    public static void Evaluate()
+    public static void Evaluate(int LoopIterations)
     {
         var result = 0.0;
-
-        result += F(5);
+        for(int i = 0; i < LoopIterations; i++) {
+            result += F(-3);
+        }
     }
 
     /***

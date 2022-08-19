@@ -2,6 +2,14 @@
 #include "DistributionFunction.h"
 
 
+void Evaluate(int LoopIterations){
+    double result = 0;
+    for(int i = 0; i < LoopIterations; i++){
+        result += F(-3);
+    }
+}
+
+
 double F(double z) {
     double p, zabs = fabs(z), cutoff = 7.071, root2pi = sqrt(2 * M_PI);
     if (zabs > 37)

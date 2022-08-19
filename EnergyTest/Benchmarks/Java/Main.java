@@ -7,7 +7,7 @@ public class Main {
             System.exit(1);
         }
         var pipe = args[0];
-        int LoopIterations = 10;
+        int LoopIterations = 1;
         FPipe p = new FPipe(pipe);
         try {
             p.WriteCmd(Cmd.Ready);

@@ -14,7 +14,7 @@ public class JavaBenchmarks
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "MatrixMultiplication.java",
-            BenchmarkSignature = "MatrixMultiplication.DoubleArray();"
+            BenchmarkSignature = "MatrixMultiplication.DoubleArray(512);"
         };
     }
 
@@ -26,7 +26,7 @@ public class JavaBenchmarks
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "MatrixMultiplication.java",
-            BenchmarkSignature = "MatrixMultiplication.FlatArray();"
+            BenchmarkSignature = "MatrixMultiplication.FlatArray(512);"
         };
     }
 
@@ -38,31 +38,31 @@ public class JavaBenchmarks
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "DivisionLoop.java",
-            BenchmarkSignature = "DivisionLoop.LeastInteger();"
+            BenchmarkSignature = "DivisionLoop.LeastInteger(1);"
         };
     }
 
     [Benchmark("Polynomial evaluation", "Polynomial evaluation in Java", typeof(IpcBenchmarkLifecycle),
-        name: "Java PE", skip: false, loopIterations: 67108864)]
+        name: "Java PE", skip: false, loopIterations: 131072)]
     public static JavaState JavaPolyEval(IpcState s)
     {
         return new JavaState(s.PipePath)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "PolynomialEvaluation.java",
-            BenchmarkSignature = "PolynomialEvaluation.HornersRule();"
+            BenchmarkSignature = "PolynomialEvaluation.HornersRule(131072);"
         };
     }
 
     [Benchmark("Distribution function evaluation", "Distribution function evaluation Java",
-        typeof(IpcBenchmarkLifecycle), name: "Java DFE", skip: false, loopIterations: 33554432)]
+        typeof(IpcBenchmarkLifecycle), name: "Java DFE", skip: false, loopIterations: 8388608)]
     public static JavaState JavaDistFuncEval(IpcState s)
     {
         return new JavaState(s.PipePath)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "DistributionFunction.java",
-            BenchmarkSignature = "DistributionFunction.Evaluate();"
+            BenchmarkSignature = "DistributionFunction.Evaluate(8388608);"
         };
     }
     

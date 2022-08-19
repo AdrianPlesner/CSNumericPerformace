@@ -31,7 +31,7 @@ public class DistributionFunctionEvaluation
         var result = 0.0;
         for (ulong i = 0; i < loopIterations; i++)
         {
-            result += F(5);
+            result += F(-3);
         }
 
         return result;

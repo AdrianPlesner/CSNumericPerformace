@@ -15,17 +15,19 @@ double* InitArray(const int size){
 /***
  * Benchmark for Matrix multiplication
  */
-void FlatArray(){
+void FlatArray(int LoopIterations){
     double* A = InitArray(size);
     double* B = InitArray(size);
     double* R = (double*) calloc(size * size, sizeof(double));
-    for(int r = 0; r < size; r++){
-        for(int c = 0; c < size; c++){
-            double sum = 0.0;
-            for(int k = 0; k < size; k++){
-                sum += A[r*size + k] * B[k * size + c];
+    for(int i = 0; i < LoopIterations; i++) {
+        for (int r = 0; r < size; r++) {
+            for (int c = 0; c < size; c++) {
+                double sum = 0.0;
+                for (int k = 0; k < size; k++) {
+                    sum += A[r * size + k] * B[k * size + c];
+                }
+                *(R + r * size + c) = sum;
             }
-            *(R +r*size + c) = sum;
         }
     }
     free(A);

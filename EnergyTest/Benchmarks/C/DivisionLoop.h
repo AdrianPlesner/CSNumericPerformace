@@ -7,6 +7,6 @@
 
 static int M = 20;
 
-void LeastInteger();
+void LeastInteger(int LoopIterations);
 
 #endif //C_DIVISIONLOOP_H
