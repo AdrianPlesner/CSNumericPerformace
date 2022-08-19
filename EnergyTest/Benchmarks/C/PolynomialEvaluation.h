@@ -3,12 +3,9 @@
 #define C_POLYNOMIALEVALUATION_H
 
 
-static const int csSize;
-double cs[1000];
-static int length;
-static double x;
+static double x = 5.5;
 
-void InitCS(int i, double* result);
+void InitCS();
 double HornersRule(int LoopIterations);
 
 #endif //C_POLYNOMIALEVALUATION_H
