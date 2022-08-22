@@ -10,7 +10,7 @@ public class JavaBenchmarks
         typeof(IpcBenchmarkLifecycle), name: "Java MM double array", skip: false, loopIterations: 1024)]
     public static JavaState JavaMatMultDoubleArray(IpcState s)
     {
-        return new JavaState(s.PipePath)
+        return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "MatrixMultiplication.java",
@@ -22,7 +22,7 @@ public class JavaBenchmarks
         typeof(IpcBenchmarkLifecycle), name: "Java MM flat array", skip: false, loopIterations: 1024)]
     public static JavaState JavaMatMultFlatArray(IpcState s)
     {
-        return new JavaState(s.PipePath)
+        return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "MatrixMultiplication.java",
@@ -34,7 +34,7 @@ public class JavaBenchmarks
         name: "Java DIL", skip: false, loopIterations: 1)]
     public static JavaState JavaDivLoop(IpcState s)
     {
-        return new JavaState(s.PipePath)
+        return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "DivisionLoop.java",
@@ -46,7 +46,7 @@ public class JavaBenchmarks
         name: "Java PE", skip: false, loopIterations: 262144)]
     public static JavaState JavaPolyEval(IpcState s)
     {
-        return new JavaState(s.PipePath)
+        return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "PolynomialEvaluation.java",
@@ -58,7 +58,7 @@ public class JavaBenchmarks
         typeof(IpcBenchmarkLifecycle), name: "Java DFE", skip: false, loopIterations: 33554432)]
     public static JavaState JavaDistFuncEval(IpcState s)
     {
-        return new JavaState(s.PipePath)
+        return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "DistributionFunction.java",
