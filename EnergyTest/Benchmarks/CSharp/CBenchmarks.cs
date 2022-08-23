@@ -3,6 +3,7 @@ using CsharpRAPL.Benchmarking.Lifecycles;
 using SocketComm;
 
 namespace EnergyTest.Benchmarks.CSharp;
+
 public class CBenchmarks
 {
     
@@ -26,7 +27,8 @@ public class CBenchmarks
             BenchmarkSignature = "LeastInteger(1)",
             LibPath = "Benchmarks/C",
             HeaderFile = "DivisionLoop.h",
-            CFile = "DivisionLoop.c"
+            CFile = "DivisionLoop.c",
+            KeepCompilationResults = true
         };
     }
 

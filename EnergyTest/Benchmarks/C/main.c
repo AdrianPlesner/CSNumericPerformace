@@ -25,6 +25,9 @@ int main(int argc, char **argv){
             for(int j = 0; j < LoopIterations; j++) {
                 ///Compute benchmark here!
             }
+        }else
+        {
+            exit(EXIT_FAILURE);
         }
         writeCmd(s, Done); //
         c = readCmd(s);

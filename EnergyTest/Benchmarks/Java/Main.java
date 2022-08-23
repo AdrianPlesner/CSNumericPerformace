@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello world");
+        System.out.println("Starting Java benchmark");
         if(args.length < 1){
             System.err.println("usage: [socket]");
             System.exit(1);
@@ -23,10 +23,13 @@ public class Main {
                 c = p.ReadCmd();
             }
             while (c == Cmd.Ready);
-            System.out.println("Done!");
+            System.out.println("Java Done!");
         }
         catch(PipeCmdException e) {
-            System.err.println("An error occurred read: " + c.toString());
+            System.err.println("An error occurred read: " + c);
+
+        }catch(Exception e){
+            p.WriteCmd(Cmd.Error);
         }finally {
             p.close();
         }

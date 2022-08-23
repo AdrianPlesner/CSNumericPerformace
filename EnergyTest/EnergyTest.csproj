@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CsharpRAPL" Version="1.4.0.57" />
+      <PackageReference Include="CsharpRAPL" Version="1.4.1" />
       <PackageReference Include="IPC.NamedPipe" Version="0.9.3" />
       <PackageReference Include="SocketComm" Version="1.1.1" />
     </ItemGroup>
@@ -17,6 +17,43 @@
     <ItemGroup>
       <Folder Include="Benchmarks\C" />
       <Folder Include="Benchmarks\Java" />
+      <Folder Include="bin" />
+      <Folder Include="tmp" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="bin\Release\net6.0\Benchmarks\Java\Benchmarks.iml" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\Cmd.java" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\DistributionFunction.java" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\DivisionLoop.java" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\FPipe.java" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\JavaRun.jar" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\Main.java" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\MANIFEST.MF" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\MatrixMultiplication.java" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\Cmd.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\DistributionFunction.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\DivisionLoop.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\FPipe$1.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\FPipe.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\Main.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\MatrixMultiplication.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\PipeCmdException.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\JavaRun\PolynomialEvaluation.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\Benchmarks.iml" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\Cmd.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\DistributionFunction.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\DivisionLoop.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\FPipe$1.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\FPipe.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\Main.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\MANIFEST.MF" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\MatrixMultiplication.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\PipeCmdException.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\out\production\Benchmarks\PolynomialEvaluation.class" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\PipeCmdException.java" />
+      <None Include="bin\Release\net6.0\Benchmarks\Java\PolynomialEvaluation.java" />
+      <None Include="bin\Release\net6.0\CompileJavaBenchmarks.sh" />
     </ItemGroup>
 
 </Project>

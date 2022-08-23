@@ -1,7 +1,7 @@
 using CsharpRAPL.Benchmarking.Attributes;
 using CsharpRAPL.Benchmarking.Attributes.Parameters;
 
-namespace EnergyTest.Benchmarks;
+namespace EnergyTest.Benchmarks.CSharp;
 
 public class DivisionLoop
 {
