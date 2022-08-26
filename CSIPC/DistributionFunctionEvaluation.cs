@@ -1,7 +1,4 @@
-using CsharpRAPL.Benchmarking.Attributes;
-using CsharpRAPL.Benchmarking.Attributes.Parameters;
-
-namespace EnergyTest.Benchmarks.CSharp;
+namespace CSIPC;
 
 public class DistributionFunctionEvaluation
 {
@@ -24,9 +21,8 @@ public class DistributionFunctionEvaluation
         q5 = 16.06417757920695,
         q6 = 1.755667163182642,
         q7 = .08838834764831844;
-
-    [Benchmark("Distribution function evaluation", "Distribution function evaluation in C#", name:"C sharp DFE", skip: false)]
-    public static double Evaluate([BenchmarkLoopiterations]ulong loopIterations)
+    
+    public static double Evaluate(ulong loopIterations)
     {
         var result = 0.0;
         for (ulong i = 0; i < loopIterations; i++)
