@@ -2,7 +2,7 @@ using CsharpRAPL.Benchmarking.Attributes;
 using CsharpRAPL.Benchmarking.Attributes.Parameters;
 
 namespace EnergyTest.Benchmarks.CSharp;
-
+[SkipBenchmarks]
 public class DivisionLoop
 {
     /*public static ulong Iterations;
