@@ -2,7 +2,6 @@ using CsharpRAPL.Benchmarking.Attributes;
 using CsharpRAPL.Benchmarking.Lifecycles;
 
 namespace EnergyTest.Benchmarks.CSharp;
-[SkipBenchmarks]
 public class CSBenchmarks
 {
     [Benchmark("Distribution function evaluation", "Distribution function evaluation CS IPC", typeof(IpcBenchmarkLifecycle),

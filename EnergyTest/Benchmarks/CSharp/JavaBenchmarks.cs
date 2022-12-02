@@ -3,6 +3,7 @@ using CsharpRAPL.Benchmarking.Lifecycles;
 using SocketComm;
 
 namespace EnergyTest.Benchmarks.CSharp;
+[SkipBenchmarks]
 public class JavaBenchmarks
 {
 
