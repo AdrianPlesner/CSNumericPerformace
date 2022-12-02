@@ -2,7 +2,6 @@ using CsharpRAPL.Benchmarking.Attributes;
 using CsharpRAPL.Benchmarking.Lifecycles;
 
 namespace EnergyTest.Benchmarks.CSharp;
-[SkipBenchmarks]
 public class JavaHotSpotBenchmarks
 {
 

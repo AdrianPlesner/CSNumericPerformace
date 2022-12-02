@@ -54,6 +54,15 @@
       <None Include="bin\Release\net6.0\Benchmarks\Java\PipeCmdException.java" />
       <None Include="bin\Release\net6.0\Benchmarks\Java\PolynomialEvaluation.java" />
       <None Include="bin\Release\net6.0\CompileJavaBenchmarks.sh" />
+      <None Remove="Benchmarks\C\cmake-build-debug\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Benchmarks\C\cmake-build-debug\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Benchmarks\C\cmake-build-debug\**" />
     </ItemGroup>
 
 </Project>
