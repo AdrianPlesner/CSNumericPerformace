@@ -9,7 +9,7 @@ public class CSBenchmarks
         name: "Cs IPC DFE", skip: false, loopIterations: 33554432)]
     public static IpcState IPCDistFuncEval(IpcState s)
     {
-        s.ExecutablePath = "/mnt/Data/RiderProjects/EnergyTest/CSIPC/bin/Release/net6.0/CSIPC";
+        s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
         return s;
     }
     
@@ -17,7 +17,7 @@ public class CSBenchmarks
         name: "Cs IPC DIL", skip: false, loopIterations:1)]
     public static IpcState IPCDivLoop(IpcState s)
     {
-        s.ExecutablePath = "/mnt/Data/RiderProjects/EnergyTest/CSIPC/bin/Release/net6.0/CSIPC";
+        s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
         return s;
     }
     
@@ -25,7 +25,7 @@ public class CSBenchmarks
         name: "Cs IPC PE", skip: false, loopIterations: 102400)]
     public static IpcState IPCPolyEval(IpcState s)
     {
-        s.ExecutablePath = "/mnt/Data/RiderProjects/EnergyTest/CSIPC/bin/Release/net6.0/CSIPC";
+        s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
         return s;
     }
     
@@ -33,7 +33,7 @@ public class CSBenchmarks
         name: "Cs IPC MM standard", skip: false, loopIterations: 512)]
     public static IpcState IPCMMStandard(IpcState s)
     {
-        s.ExecutablePath = "/mnt/Data/RiderProjects/EnergyTest/CSIPC/bin/Release/net6.0/CSIPC";
+        s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
         return s;
     }
     
@@ -41,7 +41,7 @@ public class CSBenchmarks
         name: "Cs IPC MM unsafe", skip: false, loopIterations: 1024)]
     public static IpcState IPCMMUnsafe(IpcState s)
     {
-        s.ExecutablePath = "/mnt/Data/RiderProjects/EnergyTest/CSIPC/bin/Release/net6.0/CSIPC";
+        s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
         return s;
     }
     
@@ -49,7 +49,7 @@ public class CSBenchmarks
         name: "Cs IPC MM JavaLike", skip: false, loopIterations: 1024)]
     public static IpcState IPCMMJavaLike(IpcState s)
     {
-        s.ExecutablePath = "/mnt/Data/RiderProjects/EnergyTest/CSIPC/bin/Release/net6.0/CSIPC";
+        s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
         return s;
     }
 }
