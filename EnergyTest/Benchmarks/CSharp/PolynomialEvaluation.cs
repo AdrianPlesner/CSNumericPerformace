@@ -25,7 +25,7 @@ public class PolynomialEvaluation
         return result;
     }    
 
-    [Benchmark("Polynomial evaluation","Polynomial evaluation", name:"C sharp PE", skip: false)]
+    [Benchmark("Polynomial evaluation","Polynomial evaluation", name:"Cs", skip: false)]
     public static double HornersRule([BenchmarkLoopiterations] ulong LoopIterations)
     {
         double result = 0.0;

@@ -25,7 +25,7 @@ public class DistributionFunctionEvaluation
         q6 = 1.755667163182642,
         q7 = .08838834764831844;
 
-    [Benchmark("Distribution function evaluation", "Distribution function evaluation in C#", name:"C sharp DFE", skip: false)]
+    [Benchmark("Distribution function evaluation", "Distribution function evaluation in C#", name:"Cs", skip: false)]
     public static double Evaluate([BenchmarkLoopiterations]ulong loopIterations)
     {
         var result = 0.0;
