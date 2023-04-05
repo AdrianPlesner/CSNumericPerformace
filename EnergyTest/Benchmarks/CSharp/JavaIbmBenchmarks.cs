@@ -3,6 +3,7 @@ using CsharpRAPL.Benchmarking.Lifecycles;
 using SocketComm;
 
 namespace EnergyTest.Benchmarks.CSharp;
+using static LoopIterations;
 public class JavaIbmBenchmarks
 {
 
@@ -46,27 +47,27 @@ public class JavaIbmBenchmarks
     }
 
     [Benchmark("Polynomial evaluation", "Polynomial evaluation in Java", typeof(IpcBenchmarkLifecycle),
-        name: "Java IBM", skip: false, loopIterations: 262144)]
+        name: "Java IBM", skip: false, loopIterations: PolyEval)]
     public static JavaState JavaPolyEval(IpcState s)
     {
         return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "PolynomialEvaluation.java",
-            BenchmarkSignature = "PolynomialEvaluation.HornersRule(262144);",
+            BenchmarkSignature = $"PolynomialEvaluation.HornersRule({PolyEval});",
             JavaPath = "/usr/lib/jvm/ibm-semeru-certified-17-jre/bin/java"
         };
     }
 
     [Benchmark("Distribution function evaluation", "Distribution function evaluation Java",
-        typeof(IpcBenchmarkLifecycle), name: "Java IBM", skip: false, loopIterations: 33554432)]
+        typeof(IpcBenchmarkLifecycle), name: "Java IBM", skip: false, loopIterations: DistFuncEval)]
     public static JavaState JavaDistFuncEval(IpcState s)
     {
         return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "DistributionFunction.java",
-            BenchmarkSignature = "DistributionFunction.Evaluate(33554432);",
+            BenchmarkSignature = $"DistributionFunction.Evaluate({DistFuncEval});",
             JavaPath = "/usr/lib/jvm/ibm-semeru-certified-17-jre/bin/java"
         };
     }

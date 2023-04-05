@@ -3,7 +3,7 @@ using CsharpRAPL.Benchmarking.Lifecycles;
 using SocketComm;
 
 namespace EnergyTest.Benchmarks.CSharp;
-
+using static LoopIterations;
 public class CBenchmarks
 {
     [Benchmark("Matrix multiplication", "Matrix multiplication in C",  typeof(IpcBenchmarkLifecycle), 
@@ -76,12 +76,12 @@ public class CBenchmarks
     
 
     [Benchmark("Polynomial evaluation", "Polynomial evaluation in C", typeof(IpcBenchmarkLifecycle), name: "C O1",
-        skip: false, loopIterations: 262144)]
+        skip: false, loopIterations: PolyEval)]
     public static CState CPolyEvalO1(IpcState s)
     {
         return new CState(s)
         {
-            BenchmarkSignature = "InitCS();HornersRule(262144);",
+            BenchmarkSignature = $"InitCS();HornersRule({PolyEval});",
             LibPath = "Benchmarks/C",
             HeaderFile = "PolynomialEvaluation.h",
             CFile = "PolynomialEvaluation.c",
@@ -90,7 +90,7 @@ public class CBenchmarks
     }
 
     [Benchmark("Polynomial evaluation", "Polynomial evaluation in C", typeof(IpcBenchmarkLifecycle), name: "C O2",
-        skip: false, loopIterations: 262144)]
+        skip: false, loopIterations: PolyEval)]
     public static CState CPolyEvalO2(IpcState s)
     {
         var state = CPolyEvalO1(s);
@@ -99,23 +99,23 @@ public class CBenchmarks
     }
     
     [Benchmark("Polynomial evaluation", "Polynomial evaluation in C", typeof(IpcBenchmarkLifecycle), name: "C O3",
-        skip: false, loopIterations: 262144)]
+        skip: false, loopIterations: PolyEval)]
     public static CState CPolyEvalO3(IpcState s)
     {
         var state = CPolyEvalO1(s);
         state.AdditionalCompilerOptions = "-O3";
         return state;
     }
-    
+
     
 
     [Benchmark("Distribution function evaluation", "Distribution function evaluation C", typeof(IpcBenchmarkLifecycle),
-        name: "C O1", skip: false, loopIterations: 33554432)]
+        name: "C O1", skip: false, loopIterations: DistFuncEval)]
     public static CState CDistFuncEvalO1(IpcState s)
     {
         return new CState(s)
         {
-            BenchmarkSignature = "Evaluate(33554432);",
+            BenchmarkSignature = $"Evaluate({DistFuncEval});",
             LibPath = "Benchmarks/C",
             HeaderFile = "DistributionFunction.h",
             CFile = "DistributionFunction.c",
@@ -124,7 +124,7 @@ public class CBenchmarks
     }
 
     [Benchmark("Distribution function evaluation", "Distribution function evaluation C", typeof(IpcBenchmarkLifecycle),
-        name: "C O2", skip: false, loopIterations: 33554432)]
+        name: "C O2", skip: false, loopIterations: DistFuncEval)]
     public static CState CDistFuncEvalO2(IpcState s)
     {
         var state = CDistFuncEvalO1(s);
@@ -133,7 +133,7 @@ public class CBenchmarks
     }
     
     [Benchmark("Distribution function evaluation", "Distribution function evaluation C", typeof(IpcBenchmarkLifecycle),
-        name: "C O3", skip: false, loopIterations: 33554432)]
+        name: "C O3", skip: false, loopIterations: DistFuncEval)]
     public static CState CDistFuncEvalO3(IpcState s)
     {
         var state = CDistFuncEvalO1(s);

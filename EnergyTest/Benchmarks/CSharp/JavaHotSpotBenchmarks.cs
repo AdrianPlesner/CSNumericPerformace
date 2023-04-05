@@ -2,6 +2,7 @@ using CsharpRAPL.Benchmarking.Attributes;
 using CsharpRAPL.Benchmarking.Lifecycles;
 
 namespace EnergyTest.Benchmarks.CSharp;
+using static LoopIterations;
 public class JavaHotSpotBenchmarks
 {
 
@@ -45,27 +46,27 @@ public class JavaHotSpotBenchmarks
     }
 
     [Benchmark("Polynomial evaluation", "Polynomial evaluation in Java", typeof(IpcBenchmarkLifecycle),
-        name: "Java HotSpot", skip: false, loopIterations: 262144)]
+        name: "Java HotSpot", skip: false, loopIterations: PolyEval)]
     public static JavaState JavaPolyEval(IpcState s)
     {
         return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "PolynomialEvaluation.java",
-            BenchmarkSignature = "PolynomialEvaluation.HornersRule(262144);",
+            BenchmarkSignature = $"PolynomialEvaluation.HornersRule({PolyEval});",
             JavaPath = "/usr/lib/jvm/jdk-17/bin/java"
         };
     }
 
     [Benchmark("Distribution function evaluation", "Distribution function evaluation Java",
-        typeof(IpcBenchmarkLifecycle), name: "Java HotSpot", skip: false, loopIterations: 33554432)]
+        typeof(IpcBenchmarkLifecycle), name: "Java HotSpot", skip: false, loopIterations: DistFuncEval)]
     public static JavaState JavaDistFuncEval(IpcState s)
     {
         return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "DistributionFunction.java",
-            BenchmarkSignature = "DistributionFunction.Evaluate(33554432);",
+            BenchmarkSignature = $"DistributionFunction.Evaluate({DistFuncEval});",
             JavaPath = "/usr/lib/jvm/jdk-17/bin/java"
         };
     }

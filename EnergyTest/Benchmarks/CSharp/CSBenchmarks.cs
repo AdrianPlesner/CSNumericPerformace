@@ -2,10 +2,11 @@ using CsharpRAPL.Benchmarking.Attributes;
 using CsharpRAPL.Benchmarking.Lifecycles;
 
 namespace EnergyTest.Benchmarks.CSharp;
+using static LoopIterations;
 public class CSBenchmarks
 {
     [Benchmark("Distribution function evaluation", "Distribution function evaluation CS IPC", typeof(IpcBenchmarkLifecycle),
-        name: "Cs IPC", skip: false, loopIterations: 33554432)]
+        name: "Cs IPC", skip: false, loopIterations: DistFuncEval)]
     public static IpcState IPCDistFuncEval(IpcState s)
     {
         s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
@@ -21,7 +22,7 @@ public class CSBenchmarks
     }
     
     [Benchmark("Polynomial evaluation", "Polynomial evaluation function CS IPC", typeof(IpcBenchmarkLifecycle),
-        name: "Cs IPC", skip: false, loopIterations: 102400)]
+        name: "Cs IPC", skip: false, loopIterations: PolyEval)]
     public static IpcState IPCPolyEval(IpcState s)
     {
         s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
