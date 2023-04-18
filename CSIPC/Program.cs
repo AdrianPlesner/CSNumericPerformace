@@ -20,7 +20,7 @@ do
     {
         pipe.ExpectCmd(Cmd.Go);
         //Run benchmark
-        DistributionFunctionEvaluation.Evaluate(100000000);
+        DistributionFunctionEvaluation.Evaluate(EnergyTest.Benchmarks.LoopIterations.DistFuncEval);
     }else if (path.Contains("DivLoop"))
     {
         pipe.ExpectCmd(Cmd.Go);
@@ -30,7 +30,7 @@ do
     {
         pipe.ExpectCmd(Cmd.Go);
         //Run benchmark
-        PolynomialEvaluation.HornersRule(1000000);
+        PolynomialEvaluation.HornersRule(EnergyTest.Benchmarks.LoopIterations.PolyEval);
     }
     else if (path.Contains("Standard"))
     {

@@ -12,4 +12,8 @@
       <PackageReference Include="SocketComm" Version="1.1.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\EnergyTest\EnergyTest.csproj" />
+    </ItemGroup>
+
 </Project>
