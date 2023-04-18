@@ -25,7 +25,7 @@ do
     {
         pipe.ExpectCmd(Cmd.Go);
         //Run benchmark
-        DivisionLoop.LeastInteger(1);
+        DivisionLoop.LeastInteger(EnergyTest.Benchmarks.LoopIterations.DivisionLoop);
     }else if (path.Contains("PolyEval"))
     {
         pipe.ExpectCmd(Cmd.Go);

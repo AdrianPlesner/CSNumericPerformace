@@ -2,11 +2,12 @@
 #include "DistributionFunction.h"
 
 
-void Evaluate(long LoopIterations){
+double Evaluate(long LoopIterations){
     double result = 0;
     for(long i = 0; i < LoopIterations; i++){
         result += F(-3);
     }
+    return result;
 }
 
 

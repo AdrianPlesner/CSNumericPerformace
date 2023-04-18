@@ -2,9 +2,10 @@
 // Created by adrian on 6/29/22.
 //
 
+#include <stdio.h>
 #include "PolynomialEvaluation.h"
 
-double cs[1000];
+double cs[100];
 static int length = sizeof cs / sizeof (cs[0]);
 
 void InitCS(){
@@ -18,9 +19,9 @@ void InitCS(){
     }
 }
 
-double HornersRule(long LoopIterations)
+long double HornersRule(long LoopIterations)
 {
-    double result = 0.0;
+    long double result = 0.0;
     for(long j = 0; j < LoopIterations; j++) {
         double res = 0.0;
         for (int i = 0; i < length; i++) {

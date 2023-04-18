@@ -1,6 +1,6 @@
 #include "DivisionLoop.h"
 
-void LeastInteger(int LoopIterations)
+long LeastInteger(int LoopIterations)
 {
     long result = 0;
     for(int i = 0; i < LoopIterations; i++) {
@@ -13,4 +13,5 @@ void LeastInteger(int LoopIterations)
 
         result += n;
     }
+    return result;
 }

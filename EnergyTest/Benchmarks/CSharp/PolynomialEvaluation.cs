@@ -7,7 +7,7 @@ public class PolynomialEvaluation
     /*public static ulong Iterations;
     public static ulong LoopIterations;*/
 
-    private static readonly double[] cs = InitCS(1000);
+    private static readonly double[] cs = InitCS(100);
     private static readonly double x = 5.5;
 
     private static double[] InitCS(int i)

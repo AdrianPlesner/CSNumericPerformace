@@ -40,12 +40,12 @@ public class CBenchmarks
     
 
     [Benchmark("Division intensive loop", "Division intensive loop in C", typeof(IpcBenchmarkLifecycle), name: "C O1 DIL",
-        skip: false, loopIterations: 1)]
+        skip: false, loopIterations: LoopIterations.DivisionLoop)]
     public static CState CDivLoopO1(IpcState s)
     {
         return new CState(s)
         {
-            BenchmarkSignature = "LeastInteger(1)",
+            BenchmarkSignature = $"LeastInteger({LoopIterations.DivisionLoop})",
             LibPath = "Benchmarks/C",
             HeaderFile = "DivisionLoop.h",
             CFile = "DivisionLoop.c",
@@ -55,7 +55,7 @@ public class CBenchmarks
     }
 
     [Benchmark("Division intensive loop", "Division intensive loop in C", typeof(IpcBenchmarkLifecycle), name: "C O2 DIL",
-        skip: false, loopIterations: 1)]
+        skip: false, loopIterations: LoopIterations.DivisionLoop)]
     public static CState CDivLoopO2(IpcState s)
     {
         var state = CDivLoopO1(s);
@@ -64,7 +64,7 @@ public class CBenchmarks
     }
     
     [Benchmark("Division intensive loop", "Division intensive loop in C", typeof(IpcBenchmarkLifecycle), name: "C O3 DIL",
-        skip: false, loopIterations: 1)]
+        skip: false, loopIterations: LoopIterations.DivisionLoop)]
     public static CState CDivLoopO3(IpcState s)
     {
         var state = CDivLoopO1(s);

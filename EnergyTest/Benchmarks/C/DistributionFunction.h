@@ -18,6 +18,6 @@ static double p0 = 220.2068679123761,
         q7 = .08838834764831844;
 
 double F(double z);
-void Evaluate(long LoopIterations);
+double Evaluate(long LoopIterations);
 
 #endif //C_DISTRIBUTIONFUNCTION_H

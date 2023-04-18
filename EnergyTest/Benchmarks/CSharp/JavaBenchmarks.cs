@@ -32,14 +32,14 @@ public class JavaBenchmarks
     }
 
     [Benchmark("Division intensive loop", "Division intensive loop in Java", typeof(IpcBenchmarkLifecycle),
-        name: "Java OpenJDK DIL", skip: false, loopIterations: 1)]
+        name: "Java OpenJDK DIL", skip: false, loopIterations: LoopIterations.DivisionLoop)]
     public static JavaState JavaDivLoop(IpcState s)
     {
         return new JavaState(s)
         {
             LibPath = "Benchmarks/Java",
             JavaFile = "DivisionLoop.java",
-            BenchmarkSignature = "DivisionLoop.LeastInteger(1);"
+            BenchmarkSignature = $"DivisionLoop.LeastInteger({LoopIterations.DivisionLoop});"
         };
     }
 

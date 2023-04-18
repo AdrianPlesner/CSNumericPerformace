@@ -1,6 +1,6 @@
 public class PolynomialEvaluation {
 
-    private static double[] cs = InitCS(1000);
+    private static double[] cs = InitCS(100);
     private static double x = 5.5;
 
     private static double[] InitCS(int i)
