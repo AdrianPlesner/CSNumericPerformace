@@ -6,7 +6,7 @@ public class DivisionLoop {
     /***
      * Benchmark for a Division Intensive Loop
      */
-    public static void LeastInteger(int LoopIterations)
+    public static long LeastInteger(int LoopIterations)
     {
         long result = 0;
         for(int i = 0; i < LoopIterations; i++) {
@@ -19,6 +19,7 @@ public class DivisionLoop {
             }
             result += n;
         }
+        return result;
 
     }
 }

@@ -20,7 +20,7 @@ public class PolynomialEvaluation {
     /***
      * Benchmark for Polynomial evaluation using horners rule
      */
-    public static void HornersRule(int LoopIterations)
+    public static double HornersRule(int LoopIterations)
     {
         double result = 0.0;
         for(int i = 0; i < LoopIterations; i++) {
@@ -28,5 +28,7 @@ public class PolynomialEvaluation {
             for (double c : cs) res = c + x * res;
             result += res;
         }
+        
+        return result;
     }
 }
