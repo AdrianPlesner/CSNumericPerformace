@@ -2,9 +2,9 @@
 #include "DistributionFunction.h"
 
 
-void Evaluate(int LoopIterations){
+void Evaluate(long LoopIterations){
     double result = 0;
-    for(int i = 0; i < LoopIterations; i++){
+    for(long i = 0; i < LoopIterations; i++){
         result += F(-3);
     }
 }

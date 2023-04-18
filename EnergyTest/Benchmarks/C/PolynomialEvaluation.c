@@ -18,10 +18,10 @@ void InitCS(){
     }
 }
 
-double HornersRule(int LoopIterations)
+double HornersRule(long LoopIterations)
 {
     double result = 0.0;
-    for(int j = 0; j < LoopIterations; j++) {
+    for(long j = 0; j < LoopIterations; j++) {
         double res = 0.0;
         for (int i = 0; i < length; i++) {
             double c = cs[i];

@@ -6,6 +6,6 @@
 static double x = 5.5;
 
 void InitCS();
-double HornersRule(int LoopIterations);
+double HornersRule(long LoopIterations);
 
 #endif //C_POLYNOMIALEVALUATION_H
