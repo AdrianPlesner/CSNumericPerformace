@@ -8,7 +8,7 @@ public class DivisionLoop
     public static ulong LoopIterations;*/
     private static readonly int M = 20;
 
-    [Benchmark("Division intensive loop","Division intensive loop in C#", name:"Cs", skip: false)]
+    [Benchmark("Division intensive loop","Division intensive loop in C#", name:"Cs DIL", skip: false)]
     public static long LeastInteger([BenchmarkLoopiterations] ulong LoopIterations)
     {
         long result = 0;

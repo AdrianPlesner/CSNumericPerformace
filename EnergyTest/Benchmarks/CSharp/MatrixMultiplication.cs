@@ -50,7 +50,7 @@ public class MatrixMultiplication
         return result;
     }
 
-    [Benchmark("Matrix multiplication", "Matrix multiplication in C# using 2D array", name:"Cs standard", skip: false)]
+    [Benchmark("Matrix multiplication", "Matrix multiplication in C# using 2D array", name:"Cs MM standard", skip: false)]
     public static void Standard([BenchmarkLoopiterations] ulong LoopIterations)
     {
         for (ulong i = 0; i < LoopIterations; i++)
@@ -68,7 +68,7 @@ public class MatrixMultiplication
         }
     }
 
-    [Benchmark("Matrix multiplication", "Matrix multiplication in C# using unsafe", name:"Cs unsafe", skip: false)]
+    [Benchmark("Matrix multiplication", "Matrix multiplication in C# using unsafe", name:"Cs MM unsafe", skip: false)]
     public static void Unsafe([BenchmarkLoopiterations] ulong LoopIterations)
     {
         for (ulong i = 0; i < LoopIterations; i++)
@@ -88,7 +88,7 @@ public class MatrixMultiplication
         }
     }
 
-    [Benchmark("Matrix multiplication", "Matrix multiplication in C# using Java Like array", name:"Cs JavaLike", skip: false)]
+    [Benchmark("Matrix multiplication", "Matrix multiplication in C# using Java Like array", name:"Cs MM JavaLike", skip: false)]
     public static void LikeJava([BenchmarkLoopiterations] ulong LoopIterations)
     {
         for (ulong i = 0; i < LoopIterations; i++)
