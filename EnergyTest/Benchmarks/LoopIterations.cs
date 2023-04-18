@@ -2,7 +2,7 @@ namespace EnergyTest.Benchmarks;
 
 public static class LoopIterations
 {
-    public const ulong DistFuncEval = 100000000000;
+    public const ulong DistFuncEval = 1410065408;
     
-    public const ulong PolyEval = 10000000000;
+    public const ulong PolyEval = 1410065408;
 }
