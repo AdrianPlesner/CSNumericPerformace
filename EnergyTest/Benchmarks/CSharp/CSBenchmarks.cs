@@ -14,7 +14,7 @@ public class CSBenchmarks
     }
     
     [Benchmark("Division intensive loop", "Division intensive loop in CS IPC", typeof(IpcBenchmarkLifecycle),
-        name: "Cs IPC DIL", skip: false, loopIterations:1)]
+        name: "Cs IPC DIL", skip: false, loopIterations:LoopIterations.DivisionLoop)]
     public static IpcState IPCDivLoop(IpcState s)
     {
         s.ExecutablePath = "../CSIPC/bin/Release/net6.0/CSIPC";
