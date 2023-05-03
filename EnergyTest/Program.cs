@@ -23,14 +23,14 @@ using SocketComm;
  * 
  */
 
-/*var options = CsharpRAPLCLI.Parse(args);
+var options = CsharpRAPLCLI.Parse(args);
 options.PlotResults = true;
 options.ZipResults = true;
 
 var suite = new BenchmarkCollector(options.Iterations, options.LoopIterations);
-suite.RunAll(false);*/
+suite.RunAll(false);
 
-var pipe = new FPipe("/tmp/test.pipe");
+/*var pipe = new FPipe("/tmp/test.pipe");
 
 pipe.Connect();
 var l = long.MaxValue;
@@ -41,3 +41,4 @@ Console.WriteLine(l2);
 pipe.SendValue(l2,SimpleConversion.NumberToBytes);
 
 pipe.Dispose();
+*/
